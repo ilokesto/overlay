@@ -5,16 +5,19 @@ description: "Import the React runtime and contracts from the root package."
 
 # Entrypoints
 
-`@ilokesto/overlay` exposes one root entrypoint. Runtime exports are `createOverlayStore`, `OverlayProvider`, `OverlayHost`, `useOverlay`, and `useOverlayItems`. Contract types include `OverlayAdapterComponent`, `OverlayAdapterMap`, `OverlayRenderProps`, `DisplayOptions`, `OverlayId`, `OverlayItem`, `OverlayRequest`, `OverlayState`, `OverlayStatus`, `OverlayStoreApi`, `OverlayProviderProps`, and `UseOverlayReturn`.
+`@ilokesto/overlay` exposes one root entrypoint. Runtime exports are `createOverlayStore`, `createOverlayContext`, `OverlayProvider`, `OverlayHost`, `useOverlay`, `useOverlayItems`, and `useOverlayItem`. Contract types include adapter hooks and maps, overlay items and stores, context contracts, `OverlayPlugin`, provider props, and `UseOverlayReturn`.
 
 ```ts lineNumbers
 import {
   OverlayProvider,
   useOverlay,
   useOverlayItems,
+  useOverlayItem,
   createOverlayStore,
+  createOverlayContext,
   type OverlayAdapterMap,
   type OverlayRenderProps,
+  type OverlayPlugin,
   type OverlayStoreApi,
 } from '@ilokesto/overlay';
 ```

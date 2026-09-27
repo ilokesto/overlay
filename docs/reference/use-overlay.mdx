@@ -5,14 +5,16 @@ description: "Open, display, close, remove, and clear overlays from React compon
 
 # useOverlay
 
-`useOverlay()` returns the command API for components inside `OverlayProvider`: `display`, `open`, `close`, `remove`, and `clear`. `display<TResult>(options)` opens an item and returns the pending promise. `open(options)` opens an item and returns only its id.
+`useOverlay()` returns the command API for components inside `OverlayProvider`: `display`, `open`, `close`, `closeAll`, `reject`, `remove`, and `clear`. `display<TResult>(options)` opens an item and returns the pending promise. `open(options)` opens an item and returns only its id.
 
 ```tsx lineNumbers
-const { display, open, close, remove, clear } = useOverlay();
+const { display, open, close, closeAll, reject, remove, clear } = useOverlay();
 
 const confirmed = await display<boolean>({ type: 'confirm' });
 const id = open({ type: 'toast', props: { message: 'Saved' } });
 close(id);
+closeAll();
+reject(id, new Error('Cancelled'));
 remove(id);
 clear();
 ```

@@ -5,7 +5,7 @@ description: "Create the provider-scoped store API that owns overlay lifecycle."
 
 # createOverlayStore
 
-`createOverlayStore()` returns an `OverlayStoreApi` with `open`, `close`, `remove`, `clear`, `subscribe`, `getSnapshot`, and `getInitialSnapshot`. Internally it stores `OverlayState` in `@ilokesto/store` and keeps pending promise resolvers by overlay id.
+`createOverlayStore()` returns an `OverlayStoreApi` with `open`, `close`, `closeAll`, `reject`, `remove`, `clear`, `subscribe`, `getSnapshot`, and `getInitialSnapshot`. Internally it stores `OverlayState` in `@ilokesto/store` and keeps pending promise settlers by overlay id.
 
 ```ts lineNumbers
 const store = createOverlayStore();
@@ -15,7 +15,7 @@ store.remove(request.id);
 const result = await request.promise;
 ```
 
-`open` creates an `OverlayItem` and returns `{ id, promise }`. `close` marks a matching open item as `closing` and records `closeResult`. `remove` removes a specific item, or the last item when no id is passed, and settles the promise. `clear` settles and removes every item. Use the store directly in tests or advanced shells; use `useOverlay` in normal React components.
+`open` creates an `OverlayItem` and returns `{ id, promise }`; an active explicit id is deduplicated to the existing request. `close` marks one open item `closing` and records `closeResult`. `closeAll` marks every open item `closing` without settling it. `reject` records rejection and settles by rejection when removal occurs. `remove` removes a specific item, or the latest item when no id is passed, and settles its promise. `clear` settles and removes every item. Use the store directly in tests or advanced shells; use `useOverlay` in normal React components.
 
 ## Practical note
 

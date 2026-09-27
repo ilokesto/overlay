@@ -5,15 +5,15 @@ description: "Create or receive a scoped overlay store and mount the built-in ho
 
 # OverlayProvider
 
-`OverlayProvider` is the boundary that makes the runtime available to hooks and adapters. It receives `adapters`, `children`, and an optional `store`. If `store` is omitted, the provider creates one with `createOverlayStore()` and keeps it stable with React memoization.
+`OverlayProvider` is the boundary that makes the runtime available to hooks and adapters. It receives `adapters`, `children`, an optional `store`, and optional `plugins`. If `store` is omitted, the provider creates one with `createOverlayStore()` and keeps it stable with React memoization.
 
 ```tsx lineNumbers
-<OverlayProvider adapters={adapters}>
+<OverlayProvider adapters={adapters} plugins={[analyticsPlugin]}>
   <AppRoutes />
 </OverlayProvider>
 ```
 
-The provider renders children first and then `OverlayHost`, so overlays are hosted near the end of the provider subtree. Pass a custom store when tests need direct control or when a shell wants to share one overlay runtime across multiple mounted roots. Every component that calls `useOverlay` or `useOverlayItems` must be under this provider, otherwise the context hook throws an error.
+Plugins provide fallback `onOpen`, `onClosing`, and `onUnmount` lifecycle policy in registration order when an adapter does not override that phase. The provider renders children first and then `OverlayHost`, so overlays are hosted near the end of the provider subtree. Pass a custom store when tests need direct control or when a shell wants to share one overlay runtime across multiple mounted roots. Every component that calls `useOverlay` or `useOverlayItems` must be under this provider, otherwise the context hook throws an error.
 
 ## Practical note
 

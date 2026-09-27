@@ -5,7 +5,7 @@ description: "overlay lifecycle을 소유하는 provider 단위 store API를 만
 
 # createOverlayStore
 
-`createOverlayStore()`는 `open`, `close`, `remove`, `clear`, `subscribe`, `getSnapshot`, `getInitialSnapshot`을 가진 `OverlayStoreApi`를 반환합니다. 내부적으로 `@ilokesto/store`에 `OverlayState`를 저장하고, overlay id별로 대기 중인 promise resolver를 보관합니다.
+`createOverlayStore()`는 `open`, `close`, `closeAll`, `reject`, `remove`, `clear`, `subscribe`, `getSnapshot`, `getInitialSnapshot`을 가진 `OverlayStoreApi`를 반환합니다. 내부적으로 `@ilokesto/store`에 `OverlayState`를 저장하고 overlay id별 pending promise settler를 보관합니다.
 
 ```ts lineNumbers
 const store = createOverlayStore();
@@ -15,7 +15,7 @@ store.remove(request.id);
 const result = await request.promise;
 ```
 
-`open`은 `OverlayItem`을 만들고 `{ id, promise }`를 반환합니다. `close`는 일치하는 열린 item을 `closing`으로 바꾸고 `closeResult`를 기록합니다. `remove`는 특정 item을 제거하거나 id가 없으면 마지막 item을 제거하고 promise를 완료합니다. `clear`는 모든 item을 완료하고 제거합니다. 일반 React 컴포넌트에서는 `useOverlay`를 쓰고, 테스트나 고급 shell에서는 store를 직접 사용하세요.
+`open`은 `OverlayItem`을 만들고 `{ id, promise }`를 반환하며 활성 explicit id는 기존 request로 deduplicate됩니다. `close`는 열린 item 하나를 `closing`으로 바꾸고 `closeResult`를 기록합니다. `closeAll`은 완료하지 않은 채 모든 열린 item을 `closing`으로 바꿉니다. `reject`는 rejection을 기록하고 제거 시 reject합니다. `remove`는 특정 item을 제거하고 id가 없으면 최신 item을 제거한 뒤 promise를 완료합니다. `clear`는 모든 item을 완료하고 제거합니다. 일반 React component에서는 `useOverlay`를 쓰고 test나 고급 shell에서는 store를 직접 사용하세요.
 
 ## 실무 메모
 

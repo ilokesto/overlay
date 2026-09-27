@@ -19,34 +19,37 @@ This guide builds a confirmation overlay that resolves a typed result. The runti
 import type { OverlayAdapterMap } from '@ilokesto/overlay';
 
 export const overlayAdapters: OverlayAdapterMap = {
-  confirm: ({ isOpen, status, close, remove, title, description }) => {
-    if (!isOpen && status !== 'closing') return null;
+  confirm: ({ close, remove, title, description }) => {
+    const finish = (result: boolean) => {
+      close(result);
+      remove();
+    };
 
     return (
-      <div role="dialog" aria-modal="true" data-state={status}>
-        <h2>{String(title)}</h2>
+      <div role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+        <h2 id="confirm-title">{String(title)}</h2>
         {description ? <p>{String(description)}</p> : null}
-        <button onClick={() => close(true)}>Confirm</button>
-        <button onClick={() => close(false)}>Cancel</button>
-        {status === 'closing' ? <button onClick={remove}>Remove</button> : null}
+        <button onClick={() => finish(true)}>Confirm</button>
+        <button onClick={() => finish(false)}>Cancel</button>
       </div>
     );
   },
 };
 ```
 
-`close(result)` marks the item as `closing` and stores the result. `remove()` removes the item from the store and settles the pending promise. This split lets adapters play an exit animation before removing the item.
+`close(result)` records the decision and `remove()` settles the pending promise. This first adapter removes immediately because it has no exit animation. A motion adapter should render while `status === 'closing'` and call `remove()` from its transition or animation completion event.
 
 ## 3. Mount the provider
 
 ```tsx lineNumbers
 import { OverlayProvider } from '@ilokesto/overlay';
 import { overlayAdapters } from './overlay-adapters';
+import { DeleteButton } from './delete-button';
 
 export function App() {
   return (
     <OverlayProvider adapters={overlayAdapters}>
-      <Routes />
+      <DeleteButton />
     </OverlayProvider>
   );
 }
@@ -59,7 +62,7 @@ export function App() {
 ```tsx lineNumbers
 import { useOverlay } from '@ilokesto/overlay';
 
-function DeleteButton() {
+export function DeleteButton() {
   const { display } = useOverlay();
 
   async function handleDelete() {
@@ -71,7 +74,7 @@ function DeleteButton() {
       },
     });
 
-    if (confirmed) await deleteProject();
+    if (confirmed) console.log('Delete the project');
   }
 
   return <button onClick={() => void handleDelete()}>Delete</button>;
@@ -79,3 +82,7 @@ function DeleteButton() {
 ```
 
 Use `display<TResult>()` when the caller should wait for a result. Use `open()` when you only need the generated id and will manage lifecycle separately.
+
+## 5. Run and verify
+
+Start the React application and select **Delete**. Selecting **Confirm** removes the dialog and logs/delegates the deletion path; **Cancel** removes it without deleting. This example supplies basic dialog semantics but not a focus trap, Escape handling, scroll lock, or visual treatment. Use [`@ilokesto/modal`](/en/modal) instead of rebuilding those policies for ordinary dialogs.

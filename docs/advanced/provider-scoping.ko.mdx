@@ -18,6 +18,20 @@ render(
 
 트레이드오프는 hook에 provider 위치가 필요하다는 점입니다. 이는 의도된 설계입니다. provider 누락은 설정 오류이지, 런타임이 전역 fallback으로 조용히 고쳐야 할 일이 아닙니다. overlay가 route나 shell 경계를 넘어야 한다면 provider를 공유 경계로 올리거나 store를 명시적으로 전달하세요.
 
+## Store와 hook을 함께 격리
+
+서로 다른 store를 전달하면 기본 React context를 사용하면서 state를 격리합니다. 독립적으로 작성된 tree가 provider와 hook identity도 분리해야 한다면 `createOverlayContext()`를 사용하세요.
+
+```tsx lineNumbers
+const widgetOverlay = createOverlayContext();
+
+<widgetOverlay.Provider adapters={widgetAdapters}>
+  <Widget />
+</widgetOverlay.Provider>
+```
+
+반환된 instance는 `{ Provider, useOverlay, useOverlayItems, useOverlayItem }`을 포함합니다. 해당 tree의 component는 같은 instance의 hook을 사용해야 하며 기본 hook은 custom context를 읽을 수 없습니다.
+
 ## 설계 요점
 
 런타임 안에 숨긴 편의보다 명시적인 경계를 우선하세요. 어떤 결정이 제품 의미에 의존한다면 코어 밖에 두고 어댑터가 책임지게 하세요. 모든 overlay item에 반드시 필요한 결정이라면 공유 lifecycle 계약에 들어갈 후보가 됩니다.

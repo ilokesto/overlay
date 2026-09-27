@@ -18,6 +18,20 @@ render(
 
 The tradeoff is that hooks require provider placement. That is intentional: a missing provider is a configuration error, not something the runtime silently repairs with a global fallback. If an overlay should cross a route or shell boundary, move the provider to the shared boundary or pass a store explicitly.
 
+## Isolate both store and hooks
+
+Passing different stores isolates state while using the default React context. When independently authored trees also need distinct provider and hook identities, use `createOverlayContext()`:
+
+```tsx lineNumbers
+const widgetOverlay = createOverlayContext();
+
+<widgetOverlay.Provider adapters={widgetAdapters}>
+  <Widget />
+</widgetOverlay.Provider>
+```
+
+The returned instance contains `{ Provider, useOverlay, useOverlayItems, useOverlayItem }`. Components in that tree must use the hooks from the same instance; default hooks cannot read a custom context.
+
 ## Design takeaway
 
 Prefer explicit boundaries over convenience hidden in the runtime. If a decision depends on product semantics, keep it outside the core and make the adapter own it. If a decision is required for every overlay item, it is a better candidate for the shared lifecycle contract.

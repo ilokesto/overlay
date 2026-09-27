@@ -5,15 +5,15 @@ description: "범위가 있는 overlay store를 만들거나 받아서 기본 ho
 
 # OverlayProvider
 
-`OverlayProvider`는 hook과 어댑터가 런타임에 접근하는 경계입니다. `adapters`, `children`, 선택적인 `store`를 받습니다. `store`를 생략하면 provider가 `createOverlayStore()`로 저장소를 만들고 React memoization으로 안정적으로 유지합니다.
+`OverlayProvider`는 hook과 어댑터가 런타임에 접근하는 경계입니다. `adapters`, `children`, 선택적인 `store`와 `plugins`를 받습니다. `store`를 생략하면 provider가 `createOverlayStore()`로 저장소를 만들고 React memoization으로 안정적으로 유지합니다.
 
 ```tsx lineNumbers
-<OverlayProvider adapters={adapters}>
+<OverlayProvider adapters={adapters} plugins={[analyticsPlugin]}>
   <AppRoutes />
 </OverlayProvider>
 ```
 
-provider는 children을 먼저 렌더링한 뒤 `OverlayHost`를 렌더링하므로 오버레이는 provider subtree의 끝부분에 host됩니다. 테스트가 직접 제어해야 하거나 shell이 여러 mounted root에서 하나의 overlay runtime을 공유해야 할 때는 custom store를 넘기세요. `useOverlay`나 `useOverlayItems`를 호출하는 컴포넌트는 반드시 이 provider 아래에 있어야 하며, 그렇지 않으면 context hook이 오류를 던집니다.
+plugin은 adapter가 해당 phase를 override하지 않을 때 등록 순서대로 fallback `onOpen`, `onClosing`, `onUnmount` lifecycle 정책을 제공합니다. provider는 children을 먼저 렌더링한 뒤 `OverlayHost`를 렌더링하므로 오버레이는 provider subtree의 끝부분에 host됩니다. 테스트가 직접 제어해야 하거나 shell이 여러 mounted root에서 하나의 overlay runtime을 공유해야 할 때는 custom store를 넘기세요. `useOverlay`나 `useOverlayItems`를 호출하는 컴포넌트는 반드시 이 provider 아래에 있어야 하며, 그렇지 않으면 context hook이 오류를 던집니다.
 
 ## 실무 메모
 

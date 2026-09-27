@@ -5,14 +5,16 @@ description: "React 컴포넌트에서 overlay를 열고 표시하고 닫고 제
 
 # useOverlay
 
-`useOverlay()`는 `OverlayProvider` 안의 컴포넌트에서 쓰는 명령 API를 반환합니다. 반환값은 `display`, `open`, `close`, `remove`, `clear`입니다. `display<TResult>(options)`는 item을 열고 대기 중인 promise를 반환합니다. `open(options)`은 item을 열고 id만 반환합니다.
+`useOverlay()`는 `OverlayProvider` 안의 component에서 쓰는 command API인 `display`, `open`, `close`, `closeAll`, `reject`, `remove`, `clear`를 반환합니다. `display<TResult>(options)`는 item을 열고 pending promise를 반환합니다. `open(options)`은 item을 열고 id만 반환합니다.
 
 ```tsx lineNumbers
-const { display, open, close, remove, clear } = useOverlay();
+const { display, open, close, closeAll, reject, remove, clear } = useOverlay();
 
 const confirmed = await display<boolean>({ type: 'confirm' });
 const id = open({ type: 'toast', props: { message: 'Saved' } });
 close(id);
+closeAll();
+reject(id, new Error('취소됨'));
 remove(id);
 clear();
 ```

@@ -15,7 +15,9 @@ function OverlayDebugPanel() {
 }
 ```
 
-대부분의 앱은 `OverlayHost`가 이미 이 hook을 사용하므로 직접 호출할 필요가 없습니다. 진단, custom host 실험, 분석 패널, 테스트 전용 컴포넌트에는 유용합니다. 반환된 item을 수정하지 마세요. 읽기 전용 snapshot으로 다루고, lifecycle 상태 변경은 `useOverlay` 명령으로 수행하세요.
+`useOverlayItem(id)`은 item 하나를 구독하고 `OverlayItem | undefined`를 반환하며 해당 item reference가 바뀌지 않으면 `Object.is`로 update를 생략합니다. 관련 없는 overlay 변경에 rerender하지 않고 lifecycle 하나만 필요할 때 사용하세요.
+
+대부분의 app은 `OverlayHost`가 이미 full-list hook을 사용하므로 직접 호출할 필요가 없습니다. 진단, custom host 실험, 분석 패널, 테스트 전용 컴포넌트에는 유용합니다. 반환된 item을 수정하지 마세요. 읽기 전용 snapshot으로 다루고, lifecycle 상태 변경은 `useOverlay` 명령으로 수행하세요.
 
 ## 실무 메모
 

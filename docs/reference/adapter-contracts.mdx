@@ -5,7 +5,7 @@ description: "Build render adapters with OverlayRenderProps and OverlayAdapterMa
 
 # Adapter contracts
 
-Adapters are React components registered by overlay `type`. `OverlayRenderProps<TResult>` supplies `id`, `isOpen`, `status`, `close(result?)`, and `remove()`. `OverlayAdapterComponent<TResult>` combines those render props with arbitrary item props, and `OverlayAdapterMap` maps type strings to adapter components.
+Adapters are React components registered by overlay `type`. `OverlayRenderProps<TResult>` supplies `id`, `isOpen`, `status`, `close(result?)`, `remove()`, and `useLifecycle(hooks)`. `OverlayAdapterComponent<TResult>` combines those render props with arbitrary item props, and `OverlayAdapterMap` maps type strings to adapter components.
 
 ```tsx lineNumbers
 const adapters: OverlayAdapterMap = {
@@ -16,6 +16,8 @@ const adapters: OverlayAdapterMap = {
   ),
 };
 ```
+
+`useLifecycle` accepts `onOpen(id, item)`, `onClosing(id, item)`, and `onUnmount(id)`. An adapter hook overrides provider plugins for that phase; otherwise every plugin runs in registration order.
 
 Keep semantic policy in adapters. A modal adapter may handle focus trap and backdrop clicks. A toast adapter may start timers and deduplicate messages. The overlay core only supplies lifecycle wiring and host dispatch. This boundary is what lets higher-level modal or toast packages depend on `@ilokesto/overlay` without the core importing them back.
 

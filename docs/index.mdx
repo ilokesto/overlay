@@ -27,9 +27,8 @@ const adapters: OverlayAdapterMap = {
     return (
       <div role="dialog" aria-modal="true">
         <h2>{String(title)}</h2>
-        <button onClick={() => close(true)}>Confirm</button>
-        <button onClick={() => close(false)}>Cancel</button>
-        <button onClick={remove}>Dismiss immediately</button>
+        <button onClick={() => { close(true); remove(); }}>Confirm</button>
+        <button onClick={() => { close(false); remove(); }}>Cancel</button>
       </div>
     );
   },
@@ -46,6 +45,10 @@ export function App() {
 }
 ```
 
-Read [Quick start](/en/overlay/quick-start) for a working flow, [Core concepts](/en/overlay/core-concepts) for the mental model, and [Adapter contracts](/en/overlay/reference/adapter-contracts) when you build reusable overlay packages on top of this runtime.
+## Overlay, Modal, or Toast?
 
-> This documentation lives in the `@ilokesto/overlay` repository and is synced to the ilokesto docs site.
+Choose this lower-level package when you are creating a new overlay family or need to own focus, dismissal, animation, and accessibility policy. For ordinary dialogs, [`@ilokesto/modal`](/en/modal) already supplies those policies. For transient notifications, [`@ilokesto/toast`](/en/toast) supplies timers, positions, live regions, and rendering.
+
+The example removes immediately because it has no exit animation, so `display()` settles. A motion adapter should call `close(result)`, render its `closing` state, then call `remove()` when motion ends.
+
+Read [Quick start](/en/overlay/quick-start) for a complete working flow, [Core concepts](/en/overlay/core-concepts) for the mental model, and [Adapter contracts](/en/overlay/reference/adapter-contracts) when you build reusable overlay packages.

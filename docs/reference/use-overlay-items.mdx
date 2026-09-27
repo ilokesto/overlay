@@ -15,7 +15,9 @@ function OverlayDebugPanel() {
 }
 ```
 
-Most apps do not need this hook directly because `OverlayHost` already uses it. It becomes useful for diagnostics, custom host experiments, analytics panels, or test-only components. Do not mutate the returned items. Treat them as a read-only snapshot and use `useOverlay` commands to change lifecycle state.
+`useOverlayItem(id)` subscribes to one item and returns `OverlayItem | undefined`, with an `Object.is` bailout when that item reference is unchanged. Use it when a component needs one lifecycle state without rerendering for unrelated overlays.
+
+Most apps do not need the full-list hook directly because `OverlayHost` already uses it. It becomes useful for diagnostics, custom host experiments, analytics panels, or test-only components. Do not mutate the returned items. Treat them as a read-only snapshot and use `useOverlay` commands to change lifecycle state.
 
 ## Practical note
 
