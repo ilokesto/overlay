@@ -4,6 +4,12 @@
 
 `@ilokesto/store` 위에 얹는 작은 React overlay runtime입니다.
 
+## 문서
+
+- 전체 문서: [English](https://ilokesto.ayden94.com/en/overlay) · [한국어](https://ilokesto.ayden94.com/ko/overlay)
+- 소스: [packages/overlay](https://github.com/ilokesto/ilokesto/tree/main/packages/overlay)
+- npm: [@ilokesto/overlay](https://www.npmjs.com/package/@ilokesto/overlay)
+
 이 패키지는 provider-scoped overlay core, built-in host, item lifecycle 관리, adapter 주입 구조를 제공합니다. modal이나 toast 의미론은 의도적으로 코어에 넣지 않아서, 상위 패키지가 같은 runtime 위에서 자신만의 동작을 구현할 수 있게 되어 있습니다.
 
 ## Features

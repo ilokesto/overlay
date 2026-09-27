@@ -6,6 +6,12 @@ A small React overlay runtime built on top of `@ilokesto/store`.
 
 This package provides a provider-scoped overlay core with a built-in host, item lifecycle management, and adapter injection. It is intentionally headless about modal or toast semantics so higher-level packages can build on top of the same runtime without leaking behavior into the core.
 
+## Documentation
+
+- Full docs: [English](https://ilokesto.ayden94.com/en/overlay) · [한국어](https://ilokesto.ayden94.com/ko/overlay)
+- Source: [packages/overlay](https://github.com/ilokesto/ilokesto/tree/main/packages/overlay)
+- npm: [@ilokesto/overlay](https://www.npmjs.com/package/@ilokesto/overlay)
+
 ## Features
 
 - **Provider-scoped runtime** — no global singleton; each `OverlayProvider` has its own store
