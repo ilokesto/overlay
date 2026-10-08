@@ -79,55 +79,47 @@ export function createOverlayStore(): OverlayStoreApi {
     return request as OverlayRequest<TResult>;
   }
 
-  function close(id: OverlayId, result?: unknown): void {
+  function transitionToClosing(
+    updateItem: (item: OverlayItem) => OverlayItem,
+  ): void {
     store.setState((prev) => ({
       ...prev,
-      items: prev.items.map((item) => {
-        if (item.id !== id || item.status === "closing") {
-          return item;
-        }
-
-        return {
-          ...item,
-          status: "closing",
-          closeResult: result,
-        };
-      }),
+      items: prev.items.map((item) =>
+        item.status === "closing" ? item : updateItem(item),
+      ),
     }));
   }
 
-  function closeAll(): void {
-    store.setState((prev) => ({
-      ...prev,
-      items: prev.items.map((item) => {
-        if (item.status === "closing") {
-          return item;
-        }
+  function close(id: OverlayId, result?: unknown): void {
+    transitionToClosing((item) =>
+      item.id === id
+        ? {
+            ...item,
+            status: "closing",
+            closeResult: result,
+          }
+        : item,
+    );
+  }
 
-        return {
-          ...item,
-          status: "closing",
-        };
-      }),
+  function closeAll(): void {
+    transitionToClosing((item) => ({
+      ...item,
+      status: "closing",
     }));
   }
 
   function reject(id: OverlayId, reason?: unknown): void {
-    store.setState((prev) => ({
-      ...prev,
-      items: prev.items.map((item) => {
-        if (item.id !== id || item.status === "closing") {
-          return item;
-        }
-
-        return {
-          ...item,
-          status: "closing",
-          rejectReason: reason,
-          rejected: true,
-        };
-      }),
-    }));
+    transitionToClosing((item) =>
+      item.id === id
+        ? {
+            ...item,
+            status: "closing",
+            rejectReason: reason,
+            rejected: true,
+          }
+        : item,
+    );
   }
 
   function remove(id?: OverlayId): void {
