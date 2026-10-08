@@ -343,6 +343,8 @@ src/
     createOverlayContext.tsx
     OverlayProvider.tsx
     OverlayHost.tsx
+    OverlayItemRenderer.tsx
+    useOverlayLifecycle.ts
     useOverlay.ts
     useOverlayItems.ts
     useOverlayItem.ts
@@ -359,7 +361,9 @@ src/
 - `createOverlayStore.ts` — `open`, `close`, `closeAll`, `reject`, `remove`, `clear` 수명주기 관리
 - `createOverlayContext.tsx` — 격리된 React context 생성 팩토리
 - `OverlayProvider.tsx` — 기본 context 인스턴스 re-export (하위 호환)
-- `OverlayHost.tsx` — 어댑터로 아이템 렌더링, 상태 전환 시 lifecycle 훅 호출
+- `OverlayHost.tsx` — 아이템을 구독하고 key를 유지하는 목록 렌더링
+- `OverlayItemRenderer.tsx` — 어댑터 선택 및 사용자 props보다 우선하는 runtime props 연결
+- `useOverlayLifecycle.ts` — 어댑터 훅 등록과 단계별 실행, 없는 단계는 plugin으로 처리
 - `useOverlay.ts` — 명령형 API 훅
 - `useOverlayItems.ts` / `useOverlayItem.ts` — `useSyncExternalStore` 기반 구독 훅
 
@@ -377,6 +381,24 @@ src/
 - `@ilokesto/overlay` 는 modal/toast 구현을 직접 import하면 안 됩니다
 
 코어는 lifecycle과 hosting을 담당하고, adapter 패키지는 의미론과 표현을 담당합니다.
+
+### Lifecycle 읽는 순서
+
+상태와 promise 소유권은 `createOverlayStore`, 목록은 `OverlayHost`,
+어댑터 연결은 `OverlayItemRenderer`, React 단계 알림은
+`useOverlayLifecycle` 순서로 읽으면 됩니다.
+
+```text
+open -> store에 item/request 추가 -> renderer mount -> onOpen
+close/reject -> store에서 closing 표시 -> onClosing -> adapter exit animation
+remove -> store에서 promise 정산과 item 제거 -> renderer cleanup -> onUnmount
+```
+
+`closeAll`은 closing 표시만 하고 `clear`는 promise를 정산하고 제거합니다.
+어댑터 훅은 단계별로 plugin보다 우선하며 plugin은 등록 순서대로 실행합니다.
+Effect 교체, StrictMode 재실행, provider unmount 시 item이 store에 남아 있으면
+제거로 취급하지 않습니다. Mount 전에 이미 closing인 item은 open에서 closing으로
+전환된 것처럼 알리지 않습니다.
 
 ## 개발
 

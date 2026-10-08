@@ -343,6 +343,8 @@ src/
     createOverlayContext.tsx
     OverlayProvider.tsx
     OverlayHost.tsx
+    OverlayItemRenderer.tsx
+    useOverlayLifecycle.ts
     useOverlay.ts
     useOverlayItems.ts
     useOverlayItem.ts
@@ -359,7 +361,9 @@ src/
 - `createOverlayStore.ts` — store with `open`, `close`, `closeAll`, `reject`, `remove`, `clear`
 - `createOverlayContext.tsx` — factory for isolated React contexts
 - `OverlayProvider.tsx` — default context instance re-export (backward compatible)
-- `OverlayHost.tsx` — renders items via adapters, calls lifecycle hooks on status transitions
+- `OverlayHost.tsx` — subscribes to items and renders a keyed list
+- `OverlayItemRenderer.tsx` — selects the adapter and binds runtime props over user props
+- `useOverlayLifecycle.ts` — registers adapter hooks and dispatches phases, falling back to plugins per phase
 - `useOverlay.ts` — command API hook
 - `useOverlayItems.ts` / `useOverlayItem.ts` — subscription hooks with `useSyncExternalStore`
 
@@ -377,6 +381,24 @@ src/
 - `@ilokesto/overlay` should not import modal or toast implementations directly
 
 The core owns lifecycle and hosting; adapter packages own semantics and presentation.
+
+### Reading the lifecycle
+
+Follow `createOverlayStore` for state and promise ownership, then `OverlayHost`
+for the rendered list, `OverlayItemRenderer` for adapter binding, and
+`useOverlayLifecycle` for React phase notifications.
+
+```text
+open -> store adds item/request -> renderer mounts -> onOpen
+close/reject -> store marks closing -> onClosing -> adapter exit animation
+remove -> store settles request and removes item -> renderer cleanup -> onUnmount
+```
+
+`closeAll` only marks items as closing; `clear` settles and removes them.
+Adapter hooks take precedence over plugins separately for each phase. Plugins
+run in registration order. Effect replacement, StrictMode replay and provider
+unmount do not count as removal while the item remains in its store. An item
+already closing before mount does not invent an open-to-closing transition.
 
 ## Development
 

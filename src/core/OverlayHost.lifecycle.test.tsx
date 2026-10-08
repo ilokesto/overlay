@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, act } from "@testing-library/react";
+import { StrictMode } from "react";
 import { createOverlayContext } from "./createOverlayContext";
 import { createOverlayStore } from "./createOverlayStore";
 import type { OverlayAdapterComponent, OverlayAdapterHooks } from "../contracts/adapter";
@@ -24,6 +25,84 @@ function createTrackingAdapter(): {
 }
 
 describe("adapter lifecycle hooks", () => {
+  it("keeps one lifecycle sequence when StrictMode replays mounted effects", () => {
+    const ctx = createOverlayContext();
+    const { Adapter, calls } = createTrackingAdapter();
+    const store = createOverlayStore();
+    store.open({ id: "strict", type: "modal" });
+    render(
+      <StrictMode>
+        <ctx.Provider store={store} adapters={{ modal: Adapter }}>
+          {null}
+        </ctx.Provider>
+      </StrictMode>,
+    );
+
+    act(() => store.close("strict"));
+    act(() => store.remove("strict"));
+
+    expect(calls).toEqual([
+      { phase: "onOpen", id: "strict" },
+      { phase: "onClosing", id: "strict" },
+      { phase: "onUnmount", id: "strict" },
+    ]);
+  });
+
+  it("does not invent an open or closing transition for an item closed before mount", async () => {
+    const ctx = createOverlayContext();
+    const { Adapter, calls } = createTrackingAdapter();
+    const store = createOverlayStore();
+    const request = store.open<string>({ id: "preclosed", type: "modal" });
+    store.close("preclosed", "result");
+    render(
+      <ctx.Provider store={store} adapters={{ modal: Adapter }}>
+        {null}
+      </ctx.Provider>,
+    );
+    expect(calls).toEqual([]);
+
+    act(() => store.remove("preclosed"));
+
+    expect(calls).toEqual([{ phase: "onUnmount", id: "preclosed" }]);
+    await expect(request.promise).resolves.toBe("result");
+  });
+
+  it("uses replacement plugins for later phases without replaying open or unmount", () => {
+    const ctx = createOverlayContext();
+    const store = createOverlayStore();
+    const calls: string[] = [];
+    const Adapter: OverlayAdapterComponent = ({ useLifecycle }) => {
+      useLifecycle({ onOpen: () => calls.push("adapter-open") });
+      return null;
+    };
+    const adapters = { modal: Adapter };
+    store.open({ id: "replacement", type: "modal" });
+    const { rerender } = render(
+      <ctx.Provider store={store} adapters={adapters} plugins={[{
+        name: "old",
+        onClosing: () => calls.push("old-closing"),
+        onUnmount: () => calls.push("old-unmount"),
+      }]}>
+        {null}
+      </ctx.Provider>,
+    );
+
+    rerender(
+      <ctx.Provider store={store} adapters={adapters} plugins={[{
+        name: "new",
+        onOpen: () => calls.push("new-open"),
+        onClosing: () => calls.push("new-closing"),
+        onUnmount: () => calls.push("new-unmount"),
+      }]}>
+        {null}
+      </ctx.Provider>,
+    );
+    act(() => store.close("replacement"));
+    act(() => store.remove("replacement"));
+
+    expect(calls).toEqual(["adapter-open", "new-closing", "new-unmount"]);
+  });
+
   it("calls onOpen once when an item is opened", () => {
     const ctx = createOverlayContext();
     const { Adapter, calls } = createTrackingAdapter();
