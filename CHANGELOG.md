@@ -1,5 +1,16 @@
 # @ilokesto/overlay
 
+## 2.0.1
+
+### Patch Changes
+
+- 6b429a4: Separate overlay list rendering, adapter binding and lifecycle dispatch into
+  focused internal modules while preserving public APIs, plugin precedence and
+  two-phase removal behavior.
+- a921e3f: Refactor overlay closing state updates through a shared local transition helper.
+- Updated dependencies [e3b4d79]
+  - @ilokesto/store@2.0.1
+
 ## 2.0.0
 
 ### Major Changes
