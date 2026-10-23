@@ -9,7 +9,7 @@ This package provides a provider-scoped overlay core with a built-in host, item 
 ## Documentation
 
 - Full docs: [English](https://ilokesto.ayden94.com/en/overlay) · [한국어](https://ilokesto.ayden94.com/ko/overlay)
-- Source: [packages/overlay](https://github.com/ilokesto/ilokesto/tree/main/packages/overlay)
+- Source: [ilokesto/overlay](https://github.com/ilokesto/overlay)
 - npm: [@ilokesto/overlay](https://www.npmjs.com/package/@ilokesto/overlay)
 
 ## Features
@@ -402,11 +402,33 @@ already closing before mount does not invent an open-to-closing transition.
 
 ## Development
 
+Use Node 22 and pnpm 10.17.1 from this repository root. No sibling checkout is required.
+
 ```bash
-pnpm install
-pnpm run build
+pnpm install --frozen-lockfile
+pnpm build
+pnpm typecheck
 pnpm test
+pnpm test:tooling
+pnpm migrate:verify
+pnpm docs:publication:verify
+pnpm docs:typecheck
+pnpm docs:build
+pnpm docs:test
+pnpm docs:start --hostname 127.0.0.1 --port 0
 ```
+
+Install the docs test browser once with `pnpm --dir website exec playwright install chromium`.
+Canonical bilingual docs live in `docs/`; `website/` owns the local renderer.
+Released examples use the exact npm identity in `docs-publication/active.json`, while
+`/en/overlay/next` and `/ko/overlay/next` use this checkout.
+The old schema 1/2 archives are immutable. New captures require the explicit schema 3
+standalone source layout and a reviewed release catalog entry.
+
+`pnpm release:verify --sha <full-SHA>` checks live GitHub Verify evidence, its packed
+artifact, main and registry state without publishing. It is intentionally not eligible
+before remote bootstrap and exact-SHA CI verification. Publishing is disabled in the
+checked-in policy; Changesets release-PR generation does not publish.
 
 Build outputs are generated in the `dist` directory. Tests run with Vitest and @testing-library/react.
 

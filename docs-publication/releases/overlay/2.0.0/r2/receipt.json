@@ -1,0 +1,1360 @@
+{
+  "schemaVersion": 2,
+  "package": {
+    "name": "@ilokesto/overlay",
+    "version": "2.0.0",
+    "channel": "latest",
+    "revision": 2,
+    "releaseCommit": "ecd9709b76d1976ec86865314e85b916f220c818",
+    "docsCommit": "e0e50ec2ec4f4d487b6c9f35ea9ee2f243684c5c",
+    "snapshot": "docs-publication/releases/overlay/2.0.0/r2"
+  },
+  "releaseSource": {
+    "commit": "ecd9709b76d1976ec86865314e85b916f220c818",
+    "packageTree": "ffcfbadda53250ff8af756ac0410bd51df9e4f83",
+    "docsTree": "b1c16ee0772aebfea47770759910f1f02a4e644f",
+    "files": [
+      {
+        "path": "packages/overlay/README.ko.md",
+        "mode": "100644",
+        "blob": "727f1501a07cff3ff134c7d89f363fd7a4ba7a91"
+      },
+      {
+        "path": "packages/overlay/README.md",
+        "mode": "100644",
+        "blob": "b1133dc6d7d5e13db995bca1425c1398365d0f87"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/adapter-boundaries.ko.mdx",
+        "mode": "100644",
+        "blob": "2f9929a4902e186cdef6f892e9ee3c9ab47ed2ae"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/adapter-boundaries.mdx",
+        "mode": "100644",
+        "blob": "a12aeed6de28d13d2097a6c6ec975d57be278307"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/lifecycle-model.ko.mdx",
+        "mode": "100644",
+        "blob": "a4e29138ebbfdd870f555452fac18b3a04a26729"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/lifecycle-model.mdx",
+        "mode": "100644",
+        "blob": "1700efbbf1d26151efc8c7ce2d33fa605fe6a893"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/meta.json",
+        "mode": "100644",
+        "blob": "533f9d07ebc1cd4f72c2cf40d480247ffb192f14"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/provider-scoping.ko.mdx",
+        "mode": "100644",
+        "blob": "a8323130b2a49555b0d875728a875735c10c1e58"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/provider-scoping.mdx",
+        "mode": "100644",
+        "blob": "ea10e8cb73eccbc257bcd906c87b65300124a88d"
+      },
+      {
+        "path": "packages/overlay/docs/core-concepts.ko.mdx",
+        "mode": "100644",
+        "blob": "9830db227ce740d2d43b2395d500fec0f557c703"
+      },
+      {
+        "path": "packages/overlay/docs/core-concepts.mdx",
+        "mode": "100644",
+        "blob": "ac67ac4eab55908d91eac8f98b0b06d1feb13415"
+      },
+      {
+        "path": "packages/overlay/docs/guides/async-result-flow.ko.mdx",
+        "mode": "100644",
+        "blob": "197191329a1f73822aae944fdcc7a9194081f358"
+      },
+      {
+        "path": "packages/overlay/docs/guides/async-result-flow.mdx",
+        "mode": "100644",
+        "blob": "52d41cb57d2345cb514144dfdb802425c3121085"
+      },
+      {
+        "path": "packages/overlay/docs/guides/confirmation-dialog.ko.mdx",
+        "mode": "100644",
+        "blob": "95470164e8e7e582f64a8be29737386a57fee898"
+      },
+      {
+        "path": "packages/overlay/docs/guides/confirmation-dialog.mdx",
+        "mode": "100644",
+        "blob": "9d6ea58e9636e4646d6ccb942c862919560f13c6"
+      },
+      {
+        "path": "packages/overlay/docs/guides/custom-adapter.ko.mdx",
+        "mode": "100644",
+        "blob": "ed9b005801c6dacd82b18d7a6ff51ea073c9d075"
+      },
+      {
+        "path": "packages/overlay/docs/guides/custom-adapter.mdx",
+        "mode": "100644",
+        "blob": "404bd18c6396aa8e82f6da06dcfe306dad6a55bf"
+      },
+      {
+        "path": "packages/overlay/docs/guides/manual-lifecycle.ko.mdx",
+        "mode": "100644",
+        "blob": "853c2fa4c30c8d8acd3cae4a25c8bc870ee04df2"
+      },
+      {
+        "path": "packages/overlay/docs/guides/manual-lifecycle.mdx",
+        "mode": "100644",
+        "blob": "cf77b67185da5f5334d367f3c22786c45a787329"
+      },
+      {
+        "path": "packages/overlay/docs/guides/meta.json",
+        "mode": "100644",
+        "blob": "6b64b5d679b0bae23bb235402300f0ecff0eaee9"
+      },
+      {
+        "path": "packages/overlay/docs/index.ko.mdx",
+        "mode": "100644",
+        "blob": "afe4f78240081cf7000528c8173fbd181e1b7baa"
+      },
+      {
+        "path": "packages/overlay/docs/index.mdx",
+        "mode": "100644",
+        "blob": "9be12280af0e019a061c0a517901b981bf6cd30d"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/meta.json",
+        "mode": "100644",
+        "blob": "1be186431586efbc4ff2eebfb0fe6d57bb78311a"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/react.ko.mdx",
+        "mode": "100644",
+        "blob": "1b11ad8b6b9b730401e22d76d186c922e5e572f3"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/react.mdx",
+        "mode": "100644",
+        "blob": "955ac100c031b2f3dbb1d8ef71910eb2fbd16af5"
+      },
+      {
+        "path": "packages/overlay/docs/meta.json",
+        "mode": "100644",
+        "blob": "4b65ce21b70f4e6550427f8fd5be46db2415465d"
+      },
+      {
+        "path": "packages/overlay/docs/quick-start.ko.mdx",
+        "mode": "100644",
+        "blob": "c789032e17895b9521d028b39aa534ea8f338e1e"
+      },
+      {
+        "path": "packages/overlay/docs/quick-start.mdx",
+        "mode": "100644",
+        "blob": "49d13817f4149a345b4d133d4761bb314e979990"
+      },
+      {
+        "path": "packages/overlay/docs/reference/adapter-contracts.ko.mdx",
+        "mode": "100644",
+        "blob": "d703aa2b4badedb803092fd10f30a1ba6ef17709"
+      },
+      {
+        "path": "packages/overlay/docs/reference/adapter-contracts.mdx",
+        "mode": "100644",
+        "blob": "eae9feee4ada7e8fe572fa8995d9c36f446117a9"
+      },
+      {
+        "path": "packages/overlay/docs/reference/create-overlay-store.ko.mdx",
+        "mode": "100644",
+        "blob": "2397128f826feb9e8e590a3f40eca6887443b1b2"
+      },
+      {
+        "path": "packages/overlay/docs/reference/create-overlay-store.mdx",
+        "mode": "100644",
+        "blob": "6cac4a0dfb864bd8aa3498a7e235dd54483814c6"
+      },
+      {
+        "path": "packages/overlay/docs/reference/entrypoints.ko.mdx",
+        "mode": "100644",
+        "blob": "0eff524c876111272952cd72dba8fe2d544c14d7"
+      },
+      {
+        "path": "packages/overlay/docs/reference/entrypoints.mdx",
+        "mode": "100644",
+        "blob": "d96b1c8fe8eb6b48aa3f40457499dba505acb047"
+      },
+      {
+        "path": "packages/overlay/docs/reference/meta.json",
+        "mode": "100644",
+        "blob": "242bd5088a2e34e60396704c2a30b4252412521f"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-host.ko.mdx",
+        "mode": "100644",
+        "blob": "980004f5ad1f42877ceb011a58b302bf6c262221"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-host.mdx",
+        "mode": "100644",
+        "blob": "755b0b7fa79c447bac8115876848d09fa092c922"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-provider.ko.mdx",
+        "mode": "100644",
+        "blob": "ad7aa7f41862796fef37d2efcfe5567e6dad1427"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-provider.mdx",
+        "mode": "100644",
+        "blob": "52b0924221f7ad2905be06de4a67d871e1ac9bbe"
+      },
+      {
+        "path": "packages/overlay/docs/reference/types.ko.mdx",
+        "mode": "100644",
+        "blob": "47b3a79e52eb5d4919a3a1e4a0bc93d46495e808"
+      },
+      {
+        "path": "packages/overlay/docs/reference/types.mdx",
+        "mode": "100644",
+        "blob": "26161b4e949b0519a52e438ae9f25962bb774b93"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay-items.ko.mdx",
+        "mode": "100644",
+        "blob": "d6fbdc9cf10426356a9179fc9b5936052fd9ed1f"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay-items.mdx",
+        "mode": "100644",
+        "blob": "a75ed950ff9269557414cc0ea8562d99f6179129"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay.ko.mdx",
+        "mode": "100644",
+        "blob": "33e93e4e14a2523d87761a484602a791d3f96dd2"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay.mdx",
+        "mode": "100644",
+        "blob": "c434ed62001ce573e2f628eda000ad25467405a4"
+      },
+      {
+        "path": "packages/overlay/docs/troubleshooting.ko.mdx",
+        "mode": "100644",
+        "blob": "596dbdb18c8d25df4d06bcdba0234dedbe96b546"
+      },
+      {
+        "path": "packages/overlay/docs/troubleshooting.mdx",
+        "mode": "100644",
+        "blob": "4d2fe47999388108bddbaf8b374655e799ff1f3c"
+      }
+    ]
+  },
+  "docsRevision": {
+    "commit": "e0e50ec2ec4f4d487b6c9f35ea9ee2f243684c5c",
+    "packageTree": "ffcfbadda53250ff8af756ac0410bd51df9e4f83",
+    "docsTree": "b1c16ee0772aebfea47770759910f1f02a4e644f",
+    "files": [
+      {
+        "path": "packages/overlay/README.ko.md",
+        "mode": "100644",
+        "blob": "727f1501a07cff3ff134c7d89f363fd7a4ba7a91"
+      },
+      {
+        "path": "packages/overlay/README.md",
+        "mode": "100644",
+        "blob": "b1133dc6d7d5e13db995bca1425c1398365d0f87"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/adapter-boundaries.ko.mdx",
+        "mode": "100644",
+        "blob": "2f9929a4902e186cdef6f892e9ee3c9ab47ed2ae"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/adapter-boundaries.mdx",
+        "mode": "100644",
+        "blob": "a12aeed6de28d13d2097a6c6ec975d57be278307"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/lifecycle-model.ko.mdx",
+        "mode": "100644",
+        "blob": "a4e29138ebbfdd870f555452fac18b3a04a26729"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/lifecycle-model.mdx",
+        "mode": "100644",
+        "blob": "1700efbbf1d26151efc8c7ce2d33fa605fe6a893"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/meta.json",
+        "mode": "100644",
+        "blob": "533f9d07ebc1cd4f72c2cf40d480247ffb192f14"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/provider-scoping.ko.mdx",
+        "mode": "100644",
+        "blob": "a8323130b2a49555b0d875728a875735c10c1e58"
+      },
+      {
+        "path": "packages/overlay/docs/advanced/provider-scoping.mdx",
+        "mode": "100644",
+        "blob": "ea10e8cb73eccbc257bcd906c87b65300124a88d"
+      },
+      {
+        "path": "packages/overlay/docs/core-concepts.ko.mdx",
+        "mode": "100644",
+        "blob": "9830db227ce740d2d43b2395d500fec0f557c703"
+      },
+      {
+        "path": "packages/overlay/docs/core-concepts.mdx",
+        "mode": "100644",
+        "blob": "ac67ac4eab55908d91eac8f98b0b06d1feb13415"
+      },
+      {
+        "path": "packages/overlay/docs/guides/async-result-flow.ko.mdx",
+        "mode": "100644",
+        "blob": "197191329a1f73822aae944fdcc7a9194081f358"
+      },
+      {
+        "path": "packages/overlay/docs/guides/async-result-flow.mdx",
+        "mode": "100644",
+        "blob": "52d41cb57d2345cb514144dfdb802425c3121085"
+      },
+      {
+        "path": "packages/overlay/docs/guides/confirmation-dialog.ko.mdx",
+        "mode": "100644",
+        "blob": "95470164e8e7e582f64a8be29737386a57fee898"
+      },
+      {
+        "path": "packages/overlay/docs/guides/confirmation-dialog.mdx",
+        "mode": "100644",
+        "blob": "9d6ea58e9636e4646d6ccb942c862919560f13c6"
+      },
+      {
+        "path": "packages/overlay/docs/guides/custom-adapter.ko.mdx",
+        "mode": "100644",
+        "blob": "ed9b005801c6dacd82b18d7a6ff51ea073c9d075"
+      },
+      {
+        "path": "packages/overlay/docs/guides/custom-adapter.mdx",
+        "mode": "100644",
+        "blob": "404bd18c6396aa8e82f6da06dcfe306dad6a55bf"
+      },
+      {
+        "path": "packages/overlay/docs/guides/manual-lifecycle.ko.mdx",
+        "mode": "100644",
+        "blob": "853c2fa4c30c8d8acd3cae4a25c8bc870ee04df2"
+      },
+      {
+        "path": "packages/overlay/docs/guides/manual-lifecycle.mdx",
+        "mode": "100644",
+        "blob": "cf77b67185da5f5334d367f3c22786c45a787329"
+      },
+      {
+        "path": "packages/overlay/docs/guides/meta.json",
+        "mode": "100644",
+        "blob": "6b64b5d679b0bae23bb235402300f0ecff0eaee9"
+      },
+      {
+        "path": "packages/overlay/docs/index.ko.mdx",
+        "mode": "100644",
+        "blob": "afe4f78240081cf7000528c8173fbd181e1b7baa"
+      },
+      {
+        "path": "packages/overlay/docs/index.mdx",
+        "mode": "100644",
+        "blob": "9be12280af0e019a061c0a517901b981bf6cd30d"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/meta.json",
+        "mode": "100644",
+        "blob": "1be186431586efbc4ff2eebfb0fe6d57bb78311a"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/react.ko.mdx",
+        "mode": "100644",
+        "blob": "1b11ad8b6b9b730401e22d76d186c922e5e572f3"
+      },
+      {
+        "path": "packages/overlay/docs/integrations/react.mdx",
+        "mode": "100644",
+        "blob": "955ac100c031b2f3dbb1d8ef71910eb2fbd16af5"
+      },
+      {
+        "path": "packages/overlay/docs/meta.json",
+        "mode": "100644",
+        "blob": "4b65ce21b70f4e6550427f8fd5be46db2415465d"
+      },
+      {
+        "path": "packages/overlay/docs/quick-start.ko.mdx",
+        "mode": "100644",
+        "blob": "c789032e17895b9521d028b39aa534ea8f338e1e"
+      },
+      {
+        "path": "packages/overlay/docs/quick-start.mdx",
+        "mode": "100644",
+        "blob": "49d13817f4149a345b4d133d4761bb314e979990"
+      },
+      {
+        "path": "packages/overlay/docs/reference/adapter-contracts.ko.mdx",
+        "mode": "100644",
+        "blob": "d703aa2b4badedb803092fd10f30a1ba6ef17709"
+      },
+      {
+        "path": "packages/overlay/docs/reference/adapter-contracts.mdx",
+        "mode": "100644",
+        "blob": "eae9feee4ada7e8fe572fa8995d9c36f446117a9"
+      },
+      {
+        "path": "packages/overlay/docs/reference/create-overlay-store.ko.mdx",
+        "mode": "100644",
+        "blob": "2397128f826feb9e8e590a3f40eca6887443b1b2"
+      },
+      {
+        "path": "packages/overlay/docs/reference/create-overlay-store.mdx",
+        "mode": "100644",
+        "blob": "6cac4a0dfb864bd8aa3498a7e235dd54483814c6"
+      },
+      {
+        "path": "packages/overlay/docs/reference/entrypoints.ko.mdx",
+        "mode": "100644",
+        "blob": "0eff524c876111272952cd72dba8fe2d544c14d7"
+      },
+      {
+        "path": "packages/overlay/docs/reference/entrypoints.mdx",
+        "mode": "100644",
+        "blob": "d96b1c8fe8eb6b48aa3f40457499dba505acb047"
+      },
+      {
+        "path": "packages/overlay/docs/reference/meta.json",
+        "mode": "100644",
+        "blob": "242bd5088a2e34e60396704c2a30b4252412521f"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-host.ko.mdx",
+        "mode": "100644",
+        "blob": "980004f5ad1f42877ceb011a58b302bf6c262221"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-host.mdx",
+        "mode": "100644",
+        "blob": "755b0b7fa79c447bac8115876848d09fa092c922"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-provider.ko.mdx",
+        "mode": "100644",
+        "blob": "ad7aa7f41862796fef37d2efcfe5567e6dad1427"
+      },
+      {
+        "path": "packages/overlay/docs/reference/overlay-provider.mdx",
+        "mode": "100644",
+        "blob": "52b0924221f7ad2905be06de4a67d871e1ac9bbe"
+      },
+      {
+        "path": "packages/overlay/docs/reference/types.ko.mdx",
+        "mode": "100644",
+        "blob": "47b3a79e52eb5d4919a3a1e4a0bc93d46495e808"
+      },
+      {
+        "path": "packages/overlay/docs/reference/types.mdx",
+        "mode": "100644",
+        "blob": "26161b4e949b0519a52e438ae9f25962bb774b93"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay-items.ko.mdx",
+        "mode": "100644",
+        "blob": "d6fbdc9cf10426356a9179fc9b5936052fd9ed1f"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay-items.mdx",
+        "mode": "100644",
+        "blob": "a75ed950ff9269557414cc0ea8562d99f6179129"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay.ko.mdx",
+        "mode": "100644",
+        "blob": "33e93e4e14a2523d87761a484602a791d3f96dd2"
+      },
+      {
+        "path": "packages/overlay/docs/reference/use-overlay.mdx",
+        "mode": "100644",
+        "blob": "c434ed62001ce573e2f628eda000ad25467405a4"
+      },
+      {
+        "path": "packages/overlay/docs/troubleshooting.ko.mdx",
+        "mode": "100644",
+        "blob": "596dbdb18c8d25df4d06bcdba0234dedbe96b546"
+      },
+      {
+        "path": "packages/overlay/docs/troubleshooting.mdx",
+        "mode": "100644",
+        "blob": "4d2fe47999388108bddbaf8b374655e799ff1f3c"
+      }
+    ]
+  },
+  "runtimeSource": {
+    "commit": "ecd9709b76d1976ec86865314e85b916f220c818",
+    "files": [
+      {
+        "path": "packages/overlay/.gitignore",
+        "bytes": 414,
+        "sha256": "3c25d908d0d6a08b09f000d27a54b82b69058f9e1be79a37db8015a74c775b7b",
+        "blob": "76c12d6f6232f163fd6aa963813956029c384c71",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/.npmignore",
+        "bytes": 80,
+        "sha256": "430499d8f5fcb55dfcab31d3959e78582e8b3c72a2d447f600154eb6fa97f59e",
+        "blob": "39bf94bb28eefd711e1cc213965430dff9d39c3c",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/.prettierrc",
+        "bytes": 126,
+        "sha256": "7e6cedbc6729b76baaa11139e6a19955da86fe62af3fc061549c01f07db0c1e2",
+        "blob": "8784f6950cfd30297215e2b3b0a52785119b80f9",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/AGENTS.md",
+        "bytes": 951,
+        "sha256": "cf4937c6c917984113698b63e5ff38d7706c0462d50ab45b2ed527b4ad332cc8",
+        "blob": "b685196e3b5fcb752fe9246765d9f8784d0cc58a",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/CHANGELOG.md",
+        "bytes": 2273,
+        "sha256": "107763e54624b61d232b79339aa2206e0a64c166ee1a2548b7fb273b2c159620",
+        "blob": "40941605bc0ec05a6b3568bbe978c156215fd230",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/package.json",
+        "bytes": 1396,
+        "sha256": "eacc450989dabec8b264a1aab462a44988f27e7924d0408e16513bce2d5dc0ab",
+        "blob": "47853e7372a5c5692b815e71049854eda50b4b62",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/contracts/adapter.ts",
+        "bytes": 805,
+        "sha256": "cb65b40aa4e32bcc2919829f36dde60b83dfb62d1e121875a6eb8911d9edf88b",
+        "blob": "28b9bd6bfa2da19de8dc57c3ad3a394d8e9667a8",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/contracts/overlay.ts",
+        "bytes": 1897,
+        "sha256": "79182bc62edadcc2676863a138e4e86bd51812edae5a6f7f0d3a1b8fdc99e329",
+        "blob": "08d92831b2303366ce41ed50571f0a02437a9ce4",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/contracts/plugin.ts",
+        "bytes": 297,
+        "sha256": "29b03ea442be6aaac65512acbb0ea4c7d69a9f25e87370d800a1088264a595e2",
+        "blob": "69ee3f745aaa3ee89c20868e7f9af848f46d4c3e",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayHost.lifecycle.test.tsx",
+        "bytes": 6209,
+        "sha256": "aa3a18f0fc73194298ca3fbbe99d08bca6910bb62edd2b2c52118a3b7dec4e9f",
+        "blob": "6fc97c5c0c631cac5f08b4a624542eced3e4d67c",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayHost.missing-adapter.test.tsx",
+        "bytes": 4196,
+        "sha256": "300515918d12286bf726d7de42e51ac0ff505401cb827680d48c2dbae607392d",
+        "blob": "0c837ffe9b9f7b535b44e6a87b516a6ff550601c",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayHost.plugin.test.tsx",
+        "bytes": 5843,
+        "sha256": "f71e7e01d0a210cd1188b11bd96510a41bd027221e08b716e4ae563d8f923159",
+        "blob": "ac2df74a43f1cb00687622abacef26a1706caa34",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayHost.props.test.tsx",
+        "bytes": 2863,
+        "sha256": "4eb7b8fa4ba69fdc21182ebf5ae7b81b98e70cf74b9e80ed20cd1a279090a0b4",
+        "blob": "3d75acb3a8bd94200b62f2da27a81748cac64806",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayHost.tsx",
+        "bytes": 3157,
+        "sha256": "d1be62e55d865b741da446d2d4114778fe6e094f29fcbf49fac083e57b1e670f",
+        "blob": "e20b681c2e06c2e364612e50038fde9db6f942fe",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/OverlayProvider.tsx",
+        "bytes": 450,
+        "sha256": "f4cab2adf88c4bd20d31655ae0d73de7d43cfea9b0c6a0d95f6cbeebf18b039a",
+        "blob": "999eb7f87fdc19d85c61d1101ea5030b64956ab5",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/createOverlayContext.test.tsx",
+        "bytes": 3192,
+        "sha256": "d0ee613daafaeaefeec4c4d02e2b72277eb419bb033cdbec24bafe557a985a9d",
+        "blob": "df2d4e659595ba8d387d4cbe407242336067f70c",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/createOverlayContext.tsx",
+        "bytes": 2456,
+        "sha256": "153f8aca5a2ffa72975ee59e3ae5e69f2a1bd5f763799b82e72df96ef68a8310",
+        "blob": "2c6447537bbe7e3526a117b42b05e10fea5b2ee0",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/createOverlayStore.test.ts",
+        "bytes": 10721,
+        "sha256": "a5e6a142b720230c61131f3ced8157c32eb08092dbb2de8f3a6a431583eb32cd",
+        "blob": "afdd58698b24f5d4b4fe2b497ac14f19f6ca6768",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/createOverlayStore.ts",
+        "bytes": 4146,
+        "sha256": "0d20aa3154dcf54a0f9810f5a015d9dab529375cc81ad1b19bbd0654edb43d64",
+        "blob": "b8a2239d1caf8352f6e2e0e6ccc7dc3ba43618b4",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/openBeforeMount.test.tsx",
+        "bytes": 2245,
+        "sha256": "54dfce484a1f806b3375b85ae1b2455a457a90c2be6d3d8d67e7356c0fac7de0",
+        "blob": "43dda0c39afe0461f4a7b46640359e09ed03fff1",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/useOverlay.test.tsx",
+        "bytes": 2058,
+        "sha256": "0bebd6bf0c8a8adff2aa4c33b6f992276f3583f6be491837d6a10018d41f1a24",
+        "blob": "a959973f079c40a58b5e1a192da5461f32f5673d",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/useOverlay.ts",
+        "bytes": 1775,
+        "sha256": "100df5cbe3063e8032703c3fee6f572a12a56b771fb29ebc31f021efadecd926",
+        "blob": "07b5aa393760101d56aadbd577145b366b9fcf3c",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/useOverlayItem.test.tsx",
+        "bytes": 3050,
+        "sha256": "d58880dcf6409dfb8c9a3cf3de1fa8696908ca06124582a7e19c038b63d82252",
+        "blob": "3bd4f9b87b8c186bd2a1ee4ba1f0030c9c85ddde",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/useOverlayItem.ts",
+        "bytes": 462,
+        "sha256": "492d17c8b236720f8526d9722a8ca2c444dadf2b7ad2fdd8fe877c039b1b1f00",
+        "blob": "556bef458a99181714a69d52cefa2fe473a74ea2",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/core/useOverlayItems.ts",
+        "bytes": 404,
+        "sha256": "bab1a210bed541cd5ed8492e936ca95b40d06babd148edaf7e66d6f1316a475c",
+        "blob": "b1a8a734235408f882b7f8ad458f45f649ca1b73",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/index.ts",
+        "bytes": 822,
+        "sha256": "41ce99cd0b803545b082bb8c4adee3bcecaf2ca2339a43e13aaecdf463067eaa",
+        "blob": "efe519b9d89ff726be6fbd397d250b96ece0aa34",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/src/test/setup.ts",
+        "bytes": 43,
+        "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409",
+        "blob": "f149f27ae4bbd7cc4f6253570176a4fce144ef95",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/tsconfig.json",
+        "bytes": 520,
+        "sha256": "8b307169db6216eb01f13bef926a52a11ecce9581955320c501a42b608781186",
+        "blob": "85ec7185d5317d75e3429a962d1a71a1a293f8a1",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/tsconfig.test.json",
+        "bytes": 202,
+        "sha256": "7a6ac28e1d6c279fffbf673bf9020c14108992a9862ad9e275570538bf3a4ccb",
+        "blob": "eba2cb8282873a1f03dd8fabd94970f03faca2c7",
+        "mode": "100644"
+      },
+      {
+        "path": "packages/overlay/vitest.config.ts",
+        "bytes": 182,
+        "sha256": "db06d7784bd01082f38537026460b65f4208bbe95fd65730526409a70309d501",
+        "blob": "9b8cada8583179175a3f08fb22cf9837d34daec9",
+        "mode": "100644"
+      }
+    ]
+  },
+  "exampleSource": {
+    "commit": "e0e50ec2ec4f4d487b6c9f35ea9ee2f243684c5c",
+    "files": [
+      {
+        "path": "apps/docs/components/demos/overlay-demo.tsx",
+        "mode": "100644",
+        "blob": "fcad291c83258434e115fd1c148b160b7d687e09"
+      }
+    ]
+  },
+  "registry": {
+    "tarball": "https://registry.npmjs.org/@ilokesto/overlay/-/overlay-2.0.0.tgz",
+    "integrity": "sha512-g3nHsweF+cl51vG95oq+C0dE5WA+G2HAXBrnrBUq5IdU2NfkiQ1EbWEsELl1/EPMFwsfnOiguaC0vT8PB/Z/sg==",
+    "shasum": "c2e79e51da3726ef03c545b9f59a99cd9e376b73",
+    "gitHead": null,
+    "attestations": null,
+    "files": [
+      {
+        "path": "README.ko.md",
+        "bytes": 14424,
+        "sha256": "375ef191b14a12934eb87a99e66f89951abd5c6b0b6b56c436f4c322651d9b89"
+      },
+      {
+        "path": "README.md",
+        "bytes": 13546,
+        "sha256": "9b9a3ed5e44f5c9ee363bb519b064ce63b0cb4ff21476cc8e147ea7bbad43b1a"
+      },
+      {
+        "path": "dist/contracts/adapter.d.ts",
+        "bytes": 811,
+        "sha256": "e5a382e0b1fe072a85e0458764faa53340d38f68aeda677a696bf6a6e1763760"
+      },
+      {
+        "path": "dist/contracts/adapter.js",
+        "bytes": 11,
+        "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      {
+        "path": "dist/contracts/overlay.d.ts",
+        "bytes": 1578,
+        "sha256": "d3df6aca046f822a4a692dc161a3b8ebd68bef76776516bbc3a129989f6550cc"
+      },
+      {
+        "path": "dist/contracts/overlay.js",
+        "bytes": 11,
+        "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      {
+        "path": "dist/contracts/plugin.d.ts",
+        "bytes": 304,
+        "sha256": "cc967d9a4e415e11ab97107a5f9412bd13ddc9bf876f11c598e41fa02836e35d"
+      },
+      {
+        "path": "dist/contracts/plugin.js",
+        "bytes": 11,
+        "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      {
+        "path": "dist/core/OverlayHost.d.ts",
+        "bytes": 261,
+        "sha256": "2a992cb142ee5d2824904437b77823d236f8725e0d5b6c2b93a8563daf109cd7"
+      },
+      {
+        "path": "dist/core/OverlayHost.js",
+        "bytes": 2783,
+        "sha256": "f14d40b0580cdecdf1fd1484cd3033db381d8a82f299482de993f036f5aba6b2"
+      },
+      {
+        "path": "dist/core/OverlayProvider.d.ts",
+        "bytes": 469,
+        "sha256": "ee8730ebe36f4d6f90a648812d505cd67d5afef4cd551a483439bff9bdbc442e"
+      },
+      {
+        "path": "dist/core/OverlayProvider.js",
+        "bytes": 343,
+        "sha256": "8d5000ba353ebfdf180290affe4179bafd5e9639859aa4a2510900e6e3b5f69d"
+      },
+      {
+        "path": "dist/core/createOverlayContext.d.ts",
+        "bytes": 838,
+        "sha256": "7ed33f99bc6245b3811eea784a1111f2a70d2427f574f881ba74aae185f331df"
+      },
+      {
+        "path": "dist/core/createOverlayContext.js",
+        "bytes": 1522,
+        "sha256": "2fcb4335128a68f50f9ab1665ffeb3b23009b757982cff00ca1dc80088a65153"
+      },
+      {
+        "path": "dist/core/createOverlayStore.d.ts",
+        "bytes": 124,
+        "sha256": "b3f25a313636a0587d0a3c35ef7053d223f3849066bb3cb2955c652161f68c37"
+      },
+      {
+        "path": "dist/core/createOverlayStore.js",
+        "bytes": 3975,
+        "sha256": "028c17075c4dd03eff8bd728a67705e86f82fddd158f59cd16ea5a0764fa08db"
+      },
+      {
+        "path": "dist/core/useOverlay.d.ts",
+        "bytes": 726,
+        "sha256": "43b3e3adbe3401e5c741d7e80d7bc315005825840abfcaa8cc18bc38c39ec82d"
+      },
+      {
+        "path": "dist/core/useOverlay.js",
+        "bytes": 891,
+        "sha256": "1798f235d2565d78fc89b66ef272145d7f92157e5a2eb6ca954fca2b0fad707c"
+      },
+      {
+        "path": "dist/core/useOverlayItem.d.ts",
+        "bytes": 240,
+        "sha256": "7c95b4bcb967f57056a3e28e78226de86400fff9b38ed44f4b952a97a828963e"
+      },
+      {
+        "path": "dist/core/useOverlayItem.js",
+        "bytes": 258,
+        "sha256": "1bfd3cc5b8cfbad311053623b0c590bb68b693feb1e579262c99d66b63dec555"
+      },
+      {
+        "path": "dist/core/useOverlayItems.d.ts",
+        "bytes": 218,
+        "sha256": "3ae788b4308f049659e99764118af634d3e4ec4b5835dd9ca21a187318bbd9fa"
+      },
+      {
+        "path": "dist/core/useOverlayItems.js",
+        "bytes": 225,
+        "sha256": "759a765d3e658325dbd6b4877f126d41be7cec420e41aae44e60146b8d77d6b4"
+      },
+      {
+        "path": "dist/index.d.ts",
+        "bytes": 794,
+        "sha256": "2d82373594d9f7c93ef8e04b6f027f7ff5b21cb76a1ef922f04622ae82eef387"
+      },
+      {
+        "path": "dist/index.js",
+        "bytes": 285,
+        "sha256": "4fe79b2d505aee9a0051a235e34af6ef642eb259c9ac38b12866654c93c3ca09"
+      },
+      {
+        "path": "package.json",
+        "bytes": 1385,
+        "sha256": "01849b85ace33b11ca01c68a781c441d70c5ead4a32ef5dd0846228d306ee6f7"
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "operational-evidence-not-cryptographic-source-provenance",
+    "report": "release-provenance.md",
+    "observedAt": "2026-09-27",
+    "publishRun": "https://github.com/ilokesto/ilokesto/actions/runs/36302267041",
+    "publishCheckout": "ecd9709b76d1976ec86865314e85b916f220c818",
+    "npmGitHead": null,
+    "npmAttestations": null,
+    "evidence": [
+      "The successful workflow checked out this commit; all eight annotated release tags peel to it.",
+      "Both shipped READMEs match source blobs; packed manifests differ only by workspace protocol rewrites.",
+      "The audit compared all published dist bytes with matching builds, including a fresh Fetcher build."
+    ],
+    "limitation": "npm exposes neither gitHead nor source provenance attestations for these versions. Workflow, tags, and byte comparisons support the source association but do not cryptographically prove it.",
+    "reportSha256": "374af7f4df1dd24d2e34aefb96656f779dbbbae0f6890cc817239b975fb29343",
+    "tag": "@ilokesto/overlay@2.0.0",
+    "tagTarget": "ecd9709b76d1976ec86865314e85b916f220c818"
+  },
+  "files": [
+    {
+      "path": "examples/apps/docs/components/demos/overlay-demo.tsx",
+      "bytes": 6438,
+      "sha256": "c530a278c094794c6f706d51c54e7028c8e48b65fd3cfed54a293537e3a61cb4"
+    },
+    {
+      "path": "npm/package.tgz",
+      "bytes": 12660,
+      "sha256": "f8ca026d7426dde7a3844aa9ed7e6aa1d34b7fab3c8be819a914a3b49d2e8cec"
+    },
+    {
+      "path": "provenance/release-provenance.md",
+      "bytes": 21178,
+      "sha256": "374af7f4df1dd24d2e34aefb96656f779dbbbae0f6890cc817239b975fb29343"
+    },
+    {
+      "path": "release/README.ko.md",
+      "bytes": 14424,
+      "sha256": "375ef191b14a12934eb87a99e66f89951abd5c6b0b6b56c436f4c322651d9b89"
+    },
+    {
+      "path": "release/README.md",
+      "bytes": 13546,
+      "sha256": "9b9a3ed5e44f5c9ee363bb519b064ce63b0cb4ff21476cc8e147ea7bbad43b1a"
+    },
+    {
+      "path": "release/docs/advanced/adapter-boundaries.ko.mdx",
+      "bytes": 1385,
+      "sha256": "972505d213f47f99ea31c50626bd76d35b281a8ff532192e2c99865f03e145bc"
+    },
+    {
+      "path": "release/docs/advanced/adapter-boundaries.mdx",
+      "bytes": 1244,
+      "sha256": "6b4e2ad31da9bffbd05ec2b1bd772efe042c3a988e575681112fa114bda98053"
+    },
+    {
+      "path": "release/docs/advanced/lifecycle-model.ko.mdx",
+      "bytes": 1442,
+      "sha256": "83309e7ac6ad52edd4d356f6048fac7ec3b45489ef359a7779c1f23a33d3e82d"
+    },
+    {
+      "path": "release/docs/advanced/lifecycle-model.mdx",
+      "bytes": 1248,
+      "sha256": "6a0b6ec116fe135f24783975d23bd05ae22b13dff3798cbb94b9708132d38aa9"
+    },
+    {
+      "path": "release/docs/advanced/meta.json",
+      "bytes": 163,
+      "sha256": "cdaa8f05baef061a3ead59ec8ebee17c100b2b96e8cfd91144bbf91059c9a4c6"
+    },
+    {
+      "path": "release/docs/advanced/provider-scoping.ko.mdx",
+      "bytes": 2099,
+      "sha256": "d99d1380a340ac84b891b1d60aab62dc0068fc7169f68abeed1edcb7f754c03e"
+    },
+    {
+      "path": "release/docs/advanced/provider-scoping.mdx",
+      "bytes": 1852,
+      "sha256": "2a6f1191e1f7f129d34736da0a31e44448d538d79118836ff3167395313afd20"
+    },
+    {
+      "path": "release/docs/core-concepts.ko.mdx",
+      "bytes": 2341,
+      "sha256": "7b955f9cf5f298c36856cba117bb7ba730800c8f71aeb03821fdc0b42128c278"
+    },
+    {
+      "path": "release/docs/core-concepts.mdx",
+      "bytes": 1986,
+      "sha256": "1a9f45cc877c0d98907c062230850743b2399a1df2a043806ff063c6a0a0533b"
+    },
+    {
+      "path": "release/docs/guides/async-result-flow.ko.mdx",
+      "bytes": 1398,
+      "sha256": "c04922368387e64f649ebe4598c30394f4c5d2bc3075fc78345dac902c9c9346"
+    },
+    {
+      "path": "release/docs/guides/async-result-flow.mdx",
+      "bytes": 1215,
+      "sha256": "b7dea7915cecc28132e7e68b209174848a31a9492b6e7c19848cfdf2f87944f0"
+    },
+    {
+      "path": "release/docs/guides/confirmation-dialog.ko.mdx",
+      "bytes": 1366,
+      "sha256": "a51a1b159c8b81b2c0f3d2c0d9e58b7b0cf7c02b7389f9b5e6be638bea1012e1"
+    },
+    {
+      "path": "release/docs/guides/confirmation-dialog.mdx",
+      "bytes": 1149,
+      "sha256": "5d256a1a7802a5b4f64c6d3ffa242048b246fe7b3c458fb175df2a47a7c48c3f"
+    },
+    {
+      "path": "release/docs/guides/custom-adapter.ko.mdx",
+      "bytes": 1473,
+      "sha256": "7deca463e81d8ba4e10fad16d058800cdcff16e08aeb1d1a0de17826b3f75471"
+    },
+    {
+      "path": "release/docs/guides/custom-adapter.mdx",
+      "bytes": 1313,
+      "sha256": "d1336f234ab4d92cc455372e7ceeabff673273484be6b5faa90338cc5b22ffea"
+    },
+    {
+      "path": "release/docs/guides/manual-lifecycle.ko.mdx",
+      "bytes": 1358,
+      "sha256": "d255f9a70d2e07d522028ead2d641d2033262d4615bdecfaf8c33bfeb7bc5eac"
+    },
+    {
+      "path": "release/docs/guides/manual-lifecycle.mdx",
+      "bytes": 1163,
+      "sha256": "6b57f3846c99e18d8c57081ab509e575aa087684a5aebf483fd362506f353534"
+    },
+    {
+      "path": "release/docs/guides/meta.json",
+      "bytes": 139,
+      "sha256": "69931c0d55074148218119000908f40fc55660c8d47b18242d94fe79fe369ee4"
+    },
+    {
+      "path": "release/docs/index.ko.mdx",
+      "bytes": 2915,
+      "sha256": "8505d26aabaa6b2ba97922aa53cfd2f2992cebfbbe77f2967cdbabce2b13e9db"
+    },
+    {
+      "path": "release/docs/index.mdx",
+      "bytes": 2597,
+      "sha256": "025cb987a389c6957ec408bf764a845341f8522caf3681736f86fe3c9157c9e0"
+    },
+    {
+      "path": "release/docs/integrations/meta.json",
+      "bytes": 60,
+      "sha256": "6bd4333b2c78e2c1b985f46c1ffad42fae4321517bc0d93e88aea1dd1f23fc6a"
+    },
+    {
+      "path": "release/docs/integrations/react.ko.mdx",
+      "bytes": 1782,
+      "sha256": "02d75e8ad101f13fc4c8dc8fcf1b2c7fcc398bf1fe14be06c26d3f325548882e"
+    },
+    {
+      "path": "release/docs/integrations/react.mdx",
+      "bytes": 1561,
+      "sha256": "9e57793b4ae89b8088490f2493cb96b02b328d24f35609a4acec895dc34029f2"
+    },
+    {
+      "path": "release/docs/meta.json",
+      "bytes": 333,
+      "sha256": "c942bcb159fa18c2073ac40017ada4bfbe0089c2195f4793106f1a453fba8ec4"
+    },
+    {
+      "path": "release/docs/quick-start.ko.mdx",
+      "bytes": 3270,
+      "sha256": "b7b03006c856e4ebd1ae4d7c48041047660d4dc06e5b2b1f96069b7c77ae1fc4"
+    },
+    {
+      "path": "release/docs/quick-start.mdx",
+      "bytes": 2978,
+      "sha256": "c75d97b9f635484b9ed699b7b29463709f932e8ef238c0a8cb814ce239e4a5a8"
+    },
+    {
+      "path": "release/docs/reference/adapter-contracts.ko.mdx",
+      "bytes": 1908,
+      "sha256": "4b4e7507403e7d45f45cad1a624835f76640f126fb8d674274f83eeed3eb5376"
+    },
+    {
+      "path": "release/docs/reference/adapter-contracts.mdx",
+      "bytes": 1657,
+      "sha256": "80dfe2d47e813ba3611a404731b670667cdf8245d8b0b8783737b3e1d4aab401"
+    },
+    {
+      "path": "release/docs/reference/create-overlay-store.ko.mdx",
+      "bytes": 1768,
+      "sha256": "5a688cf9dc2870ff12aa853093f6be91a336187d1f9ebcdaac03994bd321c8e4"
+    },
+    {
+      "path": "release/docs/reference/create-overlay-store.mdx",
+      "bytes": 1567,
+      "sha256": "bc701eddc7a66568213921e5a7f981be3747f558105f78c9337881371dc5674d"
+    },
+    {
+      "path": "release/docs/reference/entrypoints.ko.mdx",
+      "bytes": 1463,
+      "sha256": "8b40e8e6dbf174d07832274ea6f107131e0b09ec3061be7a9b8efd266a2e19d6"
+    },
+    {
+      "path": "release/docs/reference/entrypoints.mdx",
+      "bytes": 1352,
+      "sha256": "22d6d16e405edeb5a333d902493e73aa3f51a23ccf480520ef3574302129b3c1"
+    },
+    {
+      "path": "release/docs/reference/meta.json",
+      "bytes": 217,
+      "sha256": "587e34bf1d5ea64a4a1e64f28e338440b62503c714d61ddffdea375cef02f59b"
+    },
+    {
+      "path": "release/docs/reference/overlay-host.ko.mdx",
+      "bytes": 1876,
+      "sha256": "e106f460ff8f0ea4fcbd3094a7c25b19a6cdb9f0621c985de94b5a37a3c9ed83"
+    },
+    {
+      "path": "release/docs/reference/overlay-host.mdx",
+      "bytes": 1626,
+      "sha256": "491cb4f0b43f22c865754ca09dddfd7f54e22cda43a0e910e9c02c59267b313e"
+    },
+    {
+      "path": "release/docs/reference/overlay-provider.ko.mdx",
+      "bytes": 1637,
+      "sha256": "9484de1a1be4d66259ccfffc26beb032d2f045eb24c534fe88e9e4ab5b56a447"
+    },
+    {
+      "path": "release/docs/reference/overlay-provider.mdx",
+      "bytes": 1436,
+      "sha256": "86badf146eee4f28e86e2c05ac7a3a52a053ad82494019dd75c66f284387241a"
+    },
+    {
+      "path": "release/docs/reference/types.ko.mdx",
+      "bytes": 1763,
+      "sha256": "498b944d09db1cb4feafed75c9df130815c8306910480ff18e75e47ec530d3a6"
+    },
+    {
+      "path": "release/docs/reference/types.mdx",
+      "bytes": 1312,
+      "sha256": "219655e32781769fe9f53baffe7bf0c5a404a92c68b44063178ca6778351c178"
+    },
+    {
+      "path": "release/docs/reference/use-overlay-items.ko.mdx",
+      "bytes": 1615,
+      "sha256": "9bc86f5b5a27b87c71952290670305714730e37b59118a647519620dfe894fe1"
+    },
+    {
+      "path": "release/docs/reference/use-overlay-items.mdx",
+      "bytes": 1441,
+      "sha256": "770ec20b6af2fc793274fde20e9ec52755f36ff79f494ad8eae0b59db914af72"
+    },
+    {
+      "path": "release/docs/reference/use-overlay.ko.mdx",
+      "bytes": 1609,
+      "sha256": "648d416c0500bdd0e1073bbd1001e74598e31b8ffea8027ba23691841541ff02"
+    },
+    {
+      "path": "release/docs/reference/use-overlay.mdx",
+      "bytes": 1454,
+      "sha256": "6c1e14d7f778387e5332962c00781b2907264b284b07b75d40343d4d92bdec59"
+    },
+    {
+      "path": "release/docs/troubleshooting.ko.mdx",
+      "bytes": 2016,
+      "sha256": "991dee239ffe69345ae7a6331ec37317317c8d7fdb9d12834b9a8c5fe16c27da"
+    },
+    {
+      "path": "release/docs/troubleshooting.mdx",
+      "bytes": 1673,
+      "sha256": "f172a2c954f36228dec23ba6b95c4d640394308b0a071b9a985f090d98b12c99"
+    },
+    {
+      "path": "revision/README.ko.md",
+      "bytes": 14424,
+      "sha256": "375ef191b14a12934eb87a99e66f89951abd5c6b0b6b56c436f4c322651d9b89"
+    },
+    {
+      "path": "revision/README.md",
+      "bytes": 13546,
+      "sha256": "9b9a3ed5e44f5c9ee363bb519b064ce63b0cb4ff21476cc8e147ea7bbad43b1a"
+    },
+    {
+      "path": "revision/docs/advanced/adapter-boundaries.ko.mdx",
+      "bytes": 1385,
+      "sha256": "972505d213f47f99ea31c50626bd76d35b281a8ff532192e2c99865f03e145bc"
+    },
+    {
+      "path": "revision/docs/advanced/adapter-boundaries.mdx",
+      "bytes": 1244,
+      "sha256": "6b4e2ad31da9bffbd05ec2b1bd772efe042c3a988e575681112fa114bda98053"
+    },
+    {
+      "path": "revision/docs/advanced/lifecycle-model.ko.mdx",
+      "bytes": 1442,
+      "sha256": "83309e7ac6ad52edd4d356f6048fac7ec3b45489ef359a7779c1f23a33d3e82d"
+    },
+    {
+      "path": "revision/docs/advanced/lifecycle-model.mdx",
+      "bytes": 1248,
+      "sha256": "6a0b6ec116fe135f24783975d23bd05ae22b13dff3798cbb94b9708132d38aa9"
+    },
+    {
+      "path": "revision/docs/advanced/meta.json",
+      "bytes": 163,
+      "sha256": "cdaa8f05baef061a3ead59ec8ebee17c100b2b96e8cfd91144bbf91059c9a4c6"
+    },
+    {
+      "path": "revision/docs/advanced/provider-scoping.ko.mdx",
+      "bytes": 2099,
+      "sha256": "d99d1380a340ac84b891b1d60aab62dc0068fc7169f68abeed1edcb7f754c03e"
+    },
+    {
+      "path": "revision/docs/advanced/provider-scoping.mdx",
+      "bytes": 1852,
+      "sha256": "2a6f1191e1f7f129d34736da0a31e44448d538d79118836ff3167395313afd20"
+    },
+    {
+      "path": "revision/docs/core-concepts.ko.mdx",
+      "bytes": 2341,
+      "sha256": "7b955f9cf5f298c36856cba117bb7ba730800c8f71aeb03821fdc0b42128c278"
+    },
+    {
+      "path": "revision/docs/core-concepts.mdx",
+      "bytes": 1986,
+      "sha256": "1a9f45cc877c0d98907c062230850743b2399a1df2a043806ff063c6a0a0533b"
+    },
+    {
+      "path": "revision/docs/guides/async-result-flow.ko.mdx",
+      "bytes": 1398,
+      "sha256": "c04922368387e64f649ebe4598c30394f4c5d2bc3075fc78345dac902c9c9346"
+    },
+    {
+      "path": "revision/docs/guides/async-result-flow.mdx",
+      "bytes": 1215,
+      "sha256": "b7dea7915cecc28132e7e68b209174848a31a9492b6e7c19848cfdf2f87944f0"
+    },
+    {
+      "path": "revision/docs/guides/confirmation-dialog.ko.mdx",
+      "bytes": 1366,
+      "sha256": "a51a1b159c8b81b2c0f3d2c0d9e58b7b0cf7c02b7389f9b5e6be638bea1012e1"
+    },
+    {
+      "path": "revision/docs/guides/confirmation-dialog.mdx",
+      "bytes": 1149,
+      "sha256": "5d256a1a7802a5b4f64c6d3ffa242048b246fe7b3c458fb175df2a47a7c48c3f"
+    },
+    {
+      "path": "revision/docs/guides/custom-adapter.ko.mdx",
+      "bytes": 1473,
+      "sha256": "7deca463e81d8ba4e10fad16d058800cdcff16e08aeb1d1a0de17826b3f75471"
+    },
+    {
+      "path": "revision/docs/guides/custom-adapter.mdx",
+      "bytes": 1313,
+      "sha256": "d1336f234ab4d92cc455372e7ceeabff673273484be6b5faa90338cc5b22ffea"
+    },
+    {
+      "path": "revision/docs/guides/manual-lifecycle.ko.mdx",
+      "bytes": 1358,
+      "sha256": "d255f9a70d2e07d522028ead2d641d2033262d4615bdecfaf8c33bfeb7bc5eac"
+    },
+    {
+      "path": "revision/docs/guides/manual-lifecycle.mdx",
+      "bytes": 1163,
+      "sha256": "6b57f3846c99e18d8c57081ab509e575aa087684a5aebf483fd362506f353534"
+    },
+    {
+      "path": "revision/docs/guides/meta.json",
+      "bytes": 139,
+      "sha256": "69931c0d55074148218119000908f40fc55660c8d47b18242d94fe79fe369ee4"
+    },
+    {
+      "path": "revision/docs/index.ko.mdx",
+      "bytes": 2915,
+      "sha256": "8505d26aabaa6b2ba97922aa53cfd2f2992cebfbbe77f2967cdbabce2b13e9db"
+    },
+    {
+      "path": "revision/docs/index.mdx",
+      "bytes": 2597,
+      "sha256": "025cb987a389c6957ec408bf764a845341f8522caf3681736f86fe3c9157c9e0"
+    },
+    {
+      "path": "revision/docs/integrations/meta.json",
+      "bytes": 60,
+      "sha256": "6bd4333b2c78e2c1b985f46c1ffad42fae4321517bc0d93e88aea1dd1f23fc6a"
+    },
+    {
+      "path": "revision/docs/integrations/react.ko.mdx",
+      "bytes": 1782,
+      "sha256": "02d75e8ad101f13fc4c8dc8fcf1b2c7fcc398bf1fe14be06c26d3f325548882e"
+    },
+    {
+      "path": "revision/docs/integrations/react.mdx",
+      "bytes": 1561,
+      "sha256": "9e57793b4ae89b8088490f2493cb96b02b328d24f35609a4acec895dc34029f2"
+    },
+    {
+      "path": "revision/docs/meta.json",
+      "bytes": 333,
+      "sha256": "c942bcb159fa18c2073ac40017ada4bfbe0089c2195f4793106f1a453fba8ec4"
+    },
+    {
+      "path": "revision/docs/quick-start.ko.mdx",
+      "bytes": 3270,
+      "sha256": "b7b03006c856e4ebd1ae4d7c48041047660d4dc06e5b2b1f96069b7c77ae1fc4"
+    },
+    {
+      "path": "revision/docs/quick-start.mdx",
+      "bytes": 2978,
+      "sha256": "c75d97b9f635484b9ed699b7b29463709f932e8ef238c0a8cb814ce239e4a5a8"
+    },
+    {
+      "path": "revision/docs/reference/adapter-contracts.ko.mdx",
+      "bytes": 1908,
+      "sha256": "4b4e7507403e7d45f45cad1a624835f76640f126fb8d674274f83eeed3eb5376"
+    },
+    {
+      "path": "revision/docs/reference/adapter-contracts.mdx",
+      "bytes": 1657,
+      "sha256": "80dfe2d47e813ba3611a404731b670667cdf8245d8b0b8783737b3e1d4aab401"
+    },
+    {
+      "path": "revision/docs/reference/create-overlay-store.ko.mdx",
+      "bytes": 1768,
+      "sha256": "5a688cf9dc2870ff12aa853093f6be91a336187d1f9ebcdaac03994bd321c8e4"
+    },
+    {
+      "path": "revision/docs/reference/create-overlay-store.mdx",
+      "bytes": 1567,
+      "sha256": "bc701eddc7a66568213921e5a7f981be3747f558105f78c9337881371dc5674d"
+    },
+    {
+      "path": "revision/docs/reference/entrypoints.ko.mdx",
+      "bytes": 1463,
+      "sha256": "8b40e8e6dbf174d07832274ea6f107131e0b09ec3061be7a9b8efd266a2e19d6"
+    },
+    {
+      "path": "revision/docs/reference/entrypoints.mdx",
+      "bytes": 1352,
+      "sha256": "22d6d16e405edeb5a333d902493e73aa3f51a23ccf480520ef3574302129b3c1"
+    },
+    {
+      "path": "revision/docs/reference/meta.json",
+      "bytes": 217,
+      "sha256": "587e34bf1d5ea64a4a1e64f28e338440b62503c714d61ddffdea375cef02f59b"
+    },
+    {
+      "path": "revision/docs/reference/overlay-host.ko.mdx",
+      "bytes": 1876,
+      "sha256": "e106f460ff8f0ea4fcbd3094a7c25b19a6cdb9f0621c985de94b5a37a3c9ed83"
+    },
+    {
+      "path": "revision/docs/reference/overlay-host.mdx",
+      "bytes": 1626,
+      "sha256": "491cb4f0b43f22c865754ca09dddfd7f54e22cda43a0e910e9c02c59267b313e"
+    },
+    {
+      "path": "revision/docs/reference/overlay-provider.ko.mdx",
+      "bytes": 1637,
+      "sha256": "9484de1a1be4d66259ccfffc26beb032d2f045eb24c534fe88e9e4ab5b56a447"
+    },
+    {
+      "path": "revision/docs/reference/overlay-provider.mdx",
+      "bytes": 1436,
+      "sha256": "86badf146eee4f28e86e2c05ac7a3a52a053ad82494019dd75c66f284387241a"
+    },
+    {
+      "path": "revision/docs/reference/types.ko.mdx",
+      "bytes": 1763,
+      "sha256": "498b944d09db1cb4feafed75c9df130815c8306910480ff18e75e47ec530d3a6"
+    },
+    {
+      "path": "revision/docs/reference/types.mdx",
+      "bytes": 1312,
+      "sha256": "219655e32781769fe9f53baffe7bf0c5a404a92c68b44063178ca6778351c178"
+    },
+    {
+      "path": "revision/docs/reference/use-overlay-items.ko.mdx",
+      "bytes": 1615,
+      "sha256": "9bc86f5b5a27b87c71952290670305714730e37b59118a647519620dfe894fe1"
+    },
+    {
+      "path": "revision/docs/reference/use-overlay-items.mdx",
+      "bytes": 1441,
+      "sha256": "770ec20b6af2fc793274fde20e9ec52755f36ff79f494ad8eae0b59db914af72"
+    },
+    {
+      "path": "revision/docs/reference/use-overlay.ko.mdx",
+      "bytes": 1609,
+      "sha256": "648d416c0500bdd0e1073bbd1001e74598e31b8ffea8027ba23691841541ff02"
+    },
+    {
+      "path": "revision/docs/reference/use-overlay.mdx",
+      "bytes": 1454,
+      "sha256": "6c1e14d7f778387e5332962c00781b2907264b284b07b75d40343d4d92bdec59"
+    },
+    {
+      "path": "revision/docs/troubleshooting.ko.mdx",
+      "bytes": 2016,
+      "sha256": "991dee239ffe69345ae7a6331ec37317317c8d7fdb9d12834b9a8c5fe16c27da"
+    },
+    {
+      "path": "revision/docs/troubleshooting.mdx",
+      "bytes": 1673,
+      "sha256": "f172a2c954f36228dec23ba6b95c4d640394308b0a071b9a985f090d98b12c99"
+    }
+  ]
+}

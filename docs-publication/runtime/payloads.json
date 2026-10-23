@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "nodes": {
+    "@ilokesto/overlay@2.0.0(react@19.2.8)": {
+      "integrity": "sha512-g3nHsweF+cl51vG95oq+C0dE5WA+G2HAXBrnrBUq5IdU2NfkiQ1EbWEsELl1/EPMFwsfnOiguaC0vT8PB/Z/sg==",
+      "files": [
+        {
+          "path": "README.ko.md",
+          "bytes": 14424,
+          "sha256": "375ef191b14a12934eb87a99e66f89951abd5c6b0b6b56c436f4c322651d9b89"
+        },
+        {
+          "path": "README.md",
+          "bytes": 13546,
+          "sha256": "9b9a3ed5e44f5c9ee363bb519b064ce63b0cb4ff21476cc8e147ea7bbad43b1a"
+        },
+        {
+          "path": "dist/contracts/adapter.d.ts",
+          "bytes": 811,
+          "sha256": "e5a382e0b1fe072a85e0458764faa53340d38f68aeda677a696bf6a6e1763760"
+        },
+        {
+          "path": "dist/contracts/adapter.js",
+          "bytes": 11,
+          "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+        },
+        {
+          "path": "dist/contracts/overlay.d.ts",
+          "bytes": 1578,
+          "sha256": "d3df6aca046f822a4a692dc161a3b8ebd68bef76776516bbc3a129989f6550cc"
+        },
+        {
+          "path": "dist/contracts/overlay.js",
+          "bytes": 11,
+          "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+        },
+        {
+          "path": "dist/contracts/plugin.d.ts",
+          "bytes": 304,
+          "sha256": "cc967d9a4e415e11ab97107a5f9412bd13ddc9bf876f11c598e41fa02836e35d"
+        },
+        {
+          "path": "dist/contracts/plugin.js",
+          "bytes": 11,
+          "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+        },
+        {
+          "path": "dist/core/OverlayHost.d.ts",
+          "bytes": 261,
+          "sha256": "2a992cb142ee5d2824904437b77823d236f8725e0d5b6c2b93a8563daf109cd7"
+        },
+        {
+          "path": "dist/core/OverlayHost.js",
+          "bytes": 2783,
+          "sha256": "f14d40b0580cdecdf1fd1484cd3033db381d8a82f299482de993f036f5aba6b2"
+        },
+        {
+          "path": "dist/core/OverlayProvider.d.ts",
+          "bytes": 469,
+          "sha256": "ee8730ebe36f4d6f90a648812d505cd67d5afef4cd551a483439bff9bdbc442e"
+        },
+        {
+          "path": "dist/core/OverlayProvider.js",
+          "bytes": 343,
+          "sha256": "8d5000ba353ebfdf180290affe4179bafd5e9639859aa4a2510900e6e3b5f69d"
+        },
+        {
+          "path": "dist/core/createOverlayContext.d.ts",
+          "bytes": 838,
+          "sha256": "7ed33f99bc6245b3811eea784a1111f2a70d2427f574f881ba74aae185f331df"
+        },
+        {
+          "path": "dist/core/createOverlayContext.js",
+          "bytes": 1522,
+          "sha256": "2fcb4335128a68f50f9ab1665ffeb3b23009b757982cff00ca1dc80088a65153"
+        },
+        {
+          "path": "dist/core/createOverlayStore.d.ts",
+          "bytes": 124,
+          "sha256": "b3f25a313636a0587d0a3c35ef7053d223f3849066bb3cb2955c652161f68c37"
+        },
+        {
+          "path": "dist/core/createOverlayStore.js",
+          "bytes": 3975,
+          "sha256": "028c17075c4dd03eff8bd728a67705e86f82fddd158f59cd16ea5a0764fa08db"
+        },
+        {
+          "path": "dist/core/useOverlay.d.ts",
+          "bytes": 726,
+          "sha256": "43b3e3adbe3401e5c741d7e80d7bc315005825840abfcaa8cc18bc38c39ec82d"
+        },
+        {
+          "path": "dist/core/useOverlay.js",
+          "bytes": 891,
+          "sha256": "1798f235d2565d78fc89b66ef272145d7f92157e5a2eb6ca954fca2b0fad707c"
+        },
+        {
+          "path": "dist/core/useOverlayItem.d.ts",
+          "bytes": 240,
+          "sha256": "7c95b4bcb967f57056a3e28e78226de86400fff9b38ed44f4b952a97a828963e"
+        },
+        {
+          "path": "dist/core/useOverlayItem.js",
+          "bytes": 258,
+          "sha256": "1bfd3cc5b8cfbad311053623b0c590bb68b693feb1e579262c99d66b63dec555"
+        },
+        {
+          "path": "dist/core/useOverlayItems.d.ts",
+          "bytes": 218,
+          "sha256": "3ae788b4308f049659e99764118af634d3e4ec4b5835dd9ca21a187318bbd9fa"
+        },
+        {
+          "path": "dist/core/useOverlayItems.js",
+          "bytes": 225,
+          "sha256": "759a765d3e658325dbd6b4877f126d41be7cec420e41aae44e60146b8d77d6b4"
+        },
+        {
+          "path": "dist/index.d.ts",
+          "bytes": 794,
+          "sha256": "2d82373594d9f7c93ef8e04b6f027f7ff5b21cb76a1ef922f04622ae82eef387"
+        },
+        {
+          "path": "dist/index.js",
+          "bytes": 285,
+          "sha256": "4fe79b2d505aee9a0051a235e34af6ef642eb259c9ac38b12866654c93c3ca09"
+        },
+        {
+          "path": "package.json",
+          "bytes": 1385,
+          "sha256": "01849b85ace33b11ca01c68a781c441d70c5ead4a32ef5dd0846228d306ee6f7"
+        }
+      ]
+    },
+    "@ilokesto/store@2.0.0": {
+      "integrity": "sha512-ezW/FizFYp6yV/cwdIi7KrDN01sSRS38CC48ozkwm6UyIs0N7dNjaWaZOlVmZCieHWm9pQKxD1Z+7EVnYet82A==",
+      "files": [
+        {
+          "path": "README.ko.md",
+          "bytes": 9463,
+          "sha256": "e78131ea132b445dab8ab3d303f99514e54913a57ad8f186d8518709fb71dc1e"
+        },
+        {
+          "path": "README.md",
+          "bytes": 8739,
+          "sha256": "e3851f98bc539b88ea380ad75a5107645d6190f42c1f3f0da6ff6cb10801ca07"
+        },
+        {
+          "path": "dist/index.d.ts",
+          "bytes": 2145,
+          "sha256": "bb89b1727732bb8d243a93b6961f7330bfad32c7bd07dabe993dcfe151dd559a"
+        },
+        {
+          "path": "dist/index.js",
+          "bytes": 3656,
+          "sha256": "8d9cc680ff55d09836605009e626371b57a97817b062e6d8a52269e860d06883"
+        },
+        {
+          "path": "package.json",
+          "bytes": 933,
+          "sha256": "b894350349b7895b6c77e7d7c9372f115903bcc9b2802916250ef235e421ab77"
+        }
+      ]
+    },
+    "react-dom@19.2.8(react@19.2.8)": {
+      "integrity": "sha512-rVprimfGBG3DR+Tq0IQG2DT5PxKth1WIGDmj5yPmlzr4YBe7uyE+Du4oVqTDXZSHGGGXRtTJEGSSePyQCMBglQ==",
+      "files": [
+        {
+          "path": "LICENSE",
+          "bytes": 1088,
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        },
+        {
+          "path": "README.md",
+          "bytes": 1096,
+          "sha256": "80589e00067a57cb9b4fbc618afe7aff06ff1fec7b2840dda1c1165d8bd35080"
+        },
+        {
+          "path": "cjs/react-dom-client.development.js",
+          "bytes": 1065698,
+          "sha256": "261c3275492d8f0b1f9b76f78268882316c8435217c39c78c65853bdcd89d500"
+        },
+        {
+          "path": "cjs/react-dom-client.production.js",
+          "bytes": 536016,
+          "sha256": "6cf4932e0c20a4572ae395035ca2e512a42d7d49c1a659fa73d6197069c28df0"
+        },
+        {
+          "path": "cjs/react-dom-profiling.development.js",
+          "bytes": 1082082,
+          "sha256": "68b75445dcd5d7ee62f712f017765e7d4c53c12366ab6581883415890620bd9c"
+        },
+        {
+          "path": "cjs/react-dom-profiling.profiling.js",
+          "bytes": 607634,
+          "sha256": "0fdba3845eb5eb31d00dd0532ecd24d9b04a114501f43f34d0f3f97919d5f336"
+        },
+        {
+          "path": "cjs/react-dom-server-legacy.browser.development.js",
+          "bytes": 395197,
+          "sha256": "6724ab5822dbc9337c1fc45e7979238bc8053ee3fbbd58ad7f8db4556d13ed85"
+        },
+        {
+          "path": "cjs/react-dom-server-legacy.browser.production.js",
+          "bytes": 237937,
+          "sha256": "42694c0dd8b60c6ca8826da4e932ec767e2322cf494a80e71d2f8fb699156266"
+        },
+        {
+          "path": "cjs/react-dom-server-legacy.node.development.js",
+          "bytes": 395194,
+          "sha256": "afb80c4aeca492da216a6e4abe6e27cf543c986d36bfb024ae2883fcb54177fb"
+        },
+        {
+          "path": "cjs/react-dom-server-legacy.node.production.js",
+          "bytes": 242793,
+          "sha256": "5f3ec8c34ca8a294bfb9532fb6b95478513cc961709ea6da1eb8a5f126ed492c"
+        },
+        {
+          "path": "cjs/react-dom-server.browser.development.js",
+          "bytes": 424658,
+          "sha256": "3243d514280f0bfd1312c91b6e66b8a58c1e90eb5f8767425c7068a81a973300"
+        },
+        {
+          "path": "cjs/react-dom-server.browser.production.js",
+          "bytes": 268058,
+          "sha256": "c4e4f2a82a5bf1330c2bbd96689ef6a01d98054dd4475054353cf888aea2609e"
+        },
+        {
+          "path": "cjs/react-dom-server.bun.development.js",
+          "bytes": 354659,
+          "sha256": "9d9f4fa5a502b42bd17473c221607cb50a175de1f7eecdf03780822c120d0a6f"
+        },
+        {
+          "path": "cjs/react-dom-server.bun.production.js",
+          "bytes": 245324,
+          "sha256": "6cb0a418bcc09f2506a7943139c5ab03b13c8e2cf93ea9f4dbb5a478c211e228"
+        },
+        {
+          "path": "cjs/react-dom-server.edge.development.js",
+          "bytes": 425439,
+          "sha256": "1995755e66224806c95bdfb151f43ce2ec3c62fb296ff7bf31c6058312c2c0b9"
+        },
+        {
+          "path": "cjs/react-dom-server.edge.production.js",
+          "bytes": 273614,
+          "sha256": "08b1b330efd70e4e083600117a326b9178ff9d741f6526d087aa1d21a8666eda"
+        },
+        {
+          "path": "cjs/react-dom-server.node.development.js",
+          "bytes": 429423,
+          "sha256": "acde2438469e46eb28a0d85828b0576ebf515844a00bbe243b554ac854374297"
+        },
+        {
+          "path": "cjs/react-dom-server.node.production.js",
+          "bytes": 277046,
+          "sha256": "7c5f4361d4d1e8d3d5ab1d1a559e78821577e2ec3974e95ed302b9c8c0753730"
+        },
+        {
+          "path": "cjs/react-dom-test-utils.development.js",
+          "bytes": 793,
+          "sha256": "a691b913756753dd769c1559b8efbd3d8157feb4c9368d2cb4b79eba67441841"
+        },
+        {
+          "path": "cjs/react-dom-test-utils.production.js",
+          "bytes": 686,
+          "sha256": "d41ce0bee80299c8330fc080936da31afa5f307dfe4912bc8a6c68f9f566d344"
+        },
+        {
+          "path": "cjs/react-dom.development.js",
+          "bytes": 17673,
+          "sha256": "07d30cb25cb9bdf68b9dc7c9467b8f29d9c7ffe0f65c6ade9924e16ac207061b"
+        },
+        {
+          "path": "cjs/react-dom.production.js",
+          "bytes": 6655,
+          "sha256": "291e0682e8b69643e8e213b6bc13849527fdd97800fef587d5be7b4a8f6a58ca"
+        },
+        {
+          "path": "cjs/react-dom.react-server.development.js",
+          "bytes": 14211,
+          "sha256": "ea05629cab85bd50fa03e0d9155642ac66ee634c870622cc06ed5e37e10e06be"
+        },
+        {
+          "path": "cjs/react-dom.react-server.production.js",
+          "bytes": 4878,
+          "sha256": "227c24d4f42d54321b984f65a14c32a6b2b7562c2e8c7ab37b46eabc9e5fa73c"
+        },
+        {
+          "path": "client.js",
+          "bytes": 1373,
+          "sha256": "00e348ab3d6bc2eef908345d0bc4e008c95bcfecec060dfda5c4967953761396"
+        },
+        {
+          "path": "client.react-server.js",
+          "bytes": 101,
+          "sha256": "93fc36199826bbc50a5c79944653a6685bd3acfb9f80b587110804e92c1c964b"
+        },
+        {
+          "path": "index.js",
+          "bytes": 1359,
+          "sha256": "ba1a3e33489f868371561777607e3ee5091df0f7ea3f1a10f789d6b86e4c1505"
+        },
+        {
+          "path": "package.json",
+          "bytes": 3057,
+          "sha256": "7c82f0967114d4b5d38b1f07e543af87c9919e8d3243f9604004819319cb2200"
+        },
+        {
+          "path": "profiling.js",
+          "bytes": 1378,
+          "sha256": "8ce82daa2079581a9127bdcf2947ec4c2c87a0f12aa5db04f80a0de650e12eea"
+        },
+        {
+          "path": "profiling.react-server.js",
+          "bytes": 104,
+          "sha256": "aec5671628a9cd521026187569e2bd33e60783ab5b4b4fe6bb05ee1dbbd921a5"
+        },
+        {
+          "path": "react-dom.react-server.js",
+          "bytes": 220,
+          "sha256": "cdd8a1f284daf7eff271da65863c2e504bda04fd33c3cb89ad17ed952488d811"
+        },
+        {
+          "path": "server.browser.js",
+          "bytes": 563,
+          "sha256": "f759460eb3571d5bf1e1a9e5ef7cb033ec5c67f25d64a6bbf5a9ac43bd25831a"
+        },
+        {
+          "path": "server.bun.js",
+          "bytes": 559,
+          "sha256": "66df58720c7b932800151fdcfd6c494c312ca80b18814a2ee4a39389715f9ce2"
+        },
+        {
+          "path": "server.edge.js",
+          "bytes": 561,
+          "sha256": "a631527404b0a7bbe10aa79db04852196fd7fd88a056c1bb84cf1a1885e1e934"
+        },
+        {
+          "path": "server.js",
+          "bytes": 58,
+          "sha256": "8a05db291adfdedb4e9509e524e4f499adec95f6ffb6b8d2e04ea73aa2950684"
+        },
+        {
+          "path": "server.node.js",
+          "bytes": 669,
+          "sha256": "f2dd93f6f91f983cd91232098d4ac55578596d33d680d7cb9438ea3b0a611b4b"
+        },
+        {
+          "path": "server.react-server.js",
+          "bytes": 101,
+          "sha256": "0b18f1c65dae3eed74e6341930d31cc68f946afb75427b1fdc65fce26b5177f3"
+        },
+        {
+          "path": "static.browser.js",
+          "bytes": 319,
+          "sha256": "34433b7ad1306a49a8c34995f505586fe0752acc0d7c94d2f8f53a1654e7cae0"
+        },
+        {
+          "path": "static.edge.js",
+          "bytes": 313,
+          "sha256": "82f7d5be1d84db14a79291edef511d1a008ddbf62822d5969865f203a4fb79dc"
+        },
+        {
+          "path": "static.js",
+          "bytes": 58,
+          "sha256": "2ed52da7c38592c3e0677b6a87ac08c3e74a365597ae7165b79231d446f11c31"
+        },
+        {
+          "path": "static.node.js",
+          "bytes": 445,
+          "sha256": "39e134ed6dc903d8972b3ae5e2aa21a8772c6a53fed34457f4dc07f6b315727b"
+        },
+        {
+          "path": "static.react-server.js",
+          "bytes": 101,
+          "sha256": "53220a11ec9a9212e3372912f4f704c6c6e12dea2ee008ea01f4f4690936892a"
+        },
+        {
+          "path": "test-utils.js",
+          "bytes": 216,
+          "sha256": "9fe1733413e1437d8602ed78ee14e932bebc8b4193657d2430f42ff0fc529cc1"
+        }
+      ]
+    },
+    "react@19.2.8": {
+      "integrity": "sha512-PWaYA1L/q9u2u7xYQi+Y3L3Yfnie7XyLeaJICV1MGD6LprsBxcAqGjYyr0eY3p+QdsA+x/Irkt4Qif8D63+Sbw==",
+      "files": [
+        {
+          "path": "LICENSE",
+          "bytes": 1088,
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        },
+        {
+          "path": "README.md",
+          "bytes": 1158,
+          "sha256": "faf7a5814bedadb9ecabcb8cf727a3477696bb0d3a5b57d5433110aa6094b85e"
+        },
+        {
+          "path": "cjs/react-compiler-runtime.development.js",
+          "bytes": 1090,
+          "sha256": "7ae8fa77a54c404572cba7065e14fe599a3d8cc0b68d34d649d8acc776e4e096"
+        },
+        {
+          "path": "cjs/react-compiler-runtime.production.js",
+          "bytes": 463,
+          "sha256": "f7d518f5c043cd008514b4fd8c665a9d2fa5686bd36c6e7d44d78187c0438700"
+        },
+        {
+          "path": "cjs/react-compiler-runtime.profiling.js",
+          "bytes": 462,
+          "sha256": "821fc2969277b5bc7814965e0ac07f815aafb3880d8bca31bcb53ce5d875edd3"
+        },
+        {
+          "path": "cjs/react-jsx-dev-runtime.development.js",
+          "bytes": 12056,
+          "sha256": "5a36d0fbb3554be840e6367736f88ebafdb1873a4f40c13f499c3969fa918dd6"
+        },
+        {
+          "path": "cjs/react-jsx-dev-runtime.production.js",
+          "bytes": 387,
+          "sha256": "ba9b367119971ed746925a600256d342eb4cc3f2389de013f61e36ff1f3594a5"
+        },
+        {
+          "path": "cjs/react-jsx-dev-runtime.profiling.js",
+          "bytes": 386,
+          "sha256": "c89fe850b7e66b6e1a10496321ea9d778a64512960d01dccf49ff0fd5d256b20"
+        },
+        {
+          "path": "cjs/react-jsx-dev-runtime.react-server.development.js",
+          "bytes": 13213,
+          "sha256": "020946778a8dc16d04209bd6ab003bbfb929c96c2d195bf689bf60d7baeabe8b"
+        },
+        {
+          "path": "cjs/react-jsx-dev-runtime.react-server.production.js",
+          "bytes": 1316,
+          "sha256": "c56f744270c8cd4d733575757eaf48de91edfa04d0f5e01ef5043bf9848263b3"
+        },
+        {
+          "path": "cjs/react-jsx-runtime.development.js",
+          "bytes": 12452,
+          "sha256": "dd50fd0db2fba44e0eee66243a45c81cfa3774cf41e4e6c0c080a601815c694d"
+        },
+        {
+          "path": "cjs/react-jsx-runtime.production.js",
+          "bytes": 976,
+          "sha256": "1e46f15002696985e80c61d47aaa30dabb03c954270a690f5f7dfbbacfa9002b"
+        },
+        {
+          "path": "cjs/react-jsx-runtime.profiling.js",
+          "bytes": 975,
+          "sha256": "27b2fb3d04f9878687ab58717172592650e256de727e910366340be87e0f8352"
+        },
+        {
+          "path": "cjs/react-jsx-runtime.react-server.development.js",
+          "bytes": 13209,
+          "sha256": "2338d052c495176d4e996090cb07bff4831f2faf95b89ad116e4e31769a5ca78"
+        },
+        {
+          "path": "cjs/react-jsx-runtime.react-server.production.js",
+          "bytes": 1312,
+          "sha256": "44bdd0dbbf51d5d49ac46ece12e919151c7f27b7f5b174790c4ca6aef0b6a1eb"
+        },
+        {
+          "path": "cjs/react.development.js",
+          "bytes": 47219,
+          "sha256": "e7a035fea0b35de567a563966fdb5e05c01f01f8ff776770d3a44794990ba3d7"
+        },
+        {
+          "path": "cjs/react.production.js",
+          "bytes": 17217,
+          "sha256": "d348b80a78c8ea0bd02b1990c7b7b514f5c276f9e74fee6e3976297585385961"
+        },
+        {
+          "path": "cjs/react.react-server.development.js",
+          "bytes": 30389,
+          "sha256": "db0b3bdb71c5fd39a15f219a116b25c980c58bef26f54002dc3827fde596e79c"
+        },
+        {
+          "path": "cjs/react.react-server.production.js",
+          "bytes": 13270,
+          "sha256": "e9a7a278f37772c63206c69a7fe0f9edfce65a3e89d859ca2ba6f2452c279b1e"
+        },
+        {
+          "path": "compiler-runtime.js",
+          "bytes": 412,
+          "sha256": "5c00456a0180b7b6b2366348f7218b0ea2c3a85c7fefe24c18533ed54126f601"
+        },
+        {
+          "path": "index.js",
+          "bytes": 186,
+          "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+        },
+        {
+          "path": "jsx-dev-runtime.js",
+          "bytes": 218,
+          "sha256": "486589120a962721c8281b5acec2f6d49e60ce5f9d908cc814ddfe71c6163ace"
+        },
+        {
+          "path": "jsx-dev-runtime.react-server.js",
+          "bytes": 244,
+          "sha256": "29cbe21640848ed3e8aebfdc47af7ff24eddcaea57b29f98958dc2c3e8fd279d"
+        },
+        {
+          "path": "jsx-runtime.js",
+          "bytes": 210,
+          "sha256": "b392951a77d0a2e6a6bd017e49d768481ae5b63c4109c6c31f622cf7b2433edc"
+        },
+        {
+          "path": "jsx-runtime.react-server.js",
+          "bytes": 236,
+          "sha256": "47346212fa0ec5c7f3a9ab36c658cdce7bb02d4f66f00aa5e11cadc0ee258853"
+        },
+        {
+          "path": "package.json",
+          "bytes": 1242,
+          "sha256": "e40c3ed9b633c9ecf188e09a4be309780a1ea0a9c068278a30ff6a27e7b2dbb6"
+        },
+        {
+          "path": "react.react-server.js",
+          "bytes": 212,
+          "sha256": "ced6f228807a193b8a0ec436304b96ca44492bae8899c3e84c2a88162843dc14"
+        }
+      ]
+    },
+    "scheduler@0.27.0": {
+      "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==",
+      "files": [
+        {
+          "path": "LICENSE",
+          "bytes": 1088,
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        },
+        {
+          "path": "README.md",
+          "bytes": 346,
+          "sha256": "e2f3a22fb7e2e18f19e9ba386b925ad23b30db03caa031c3059941367a097225"
+        },
+        {
+          "path": "cjs/scheduler-unstable_mock.development.js",
+          "bytes": 13687,
+          "sha256": "de31e2407f585fd6ba00efd420485bff8b84aa6ea3ebcb870289214d27ca34b8"
+        },
+        {
+          "path": "cjs/scheduler-unstable_mock.production.js",
+          "bytes": 11990,
+          "sha256": "d49069c9cfea586989b09fe16fa2b7ebdf064fd60fb7c932e9a3799f7e95cabf"
+        },
+        {
+          "path": "cjs/scheduler-unstable_post_task.development.js",
+          "bytes": 4639,
+          "sha256": "34171513f5d7662f42d42c479445c2536cc02161c245b0f5083ef595f88f0e20"
+        },
+        {
+          "path": "cjs/scheduler-unstable_post_task.production.js",
+          "bytes": 3974,
+          "sha256": "88e667020933b71752478d18e3f94271e9e8eb44d6dfff95ba014b06b47329be"
+        },
+        {
+          "path": "cjs/scheduler.development.js",
+          "bytes": 12144,
+          "sha256": "646eb671c8585382baff16daf92fe16a4cdd10dcf1a363c58b2ae1f6bf3a2b8d"
+        },
+        {
+          "path": "cjs/scheduler.native.development.js",
+          "bytes": 12327,
+          "sha256": "26401a9da7b51e0db1f506c5d1e8579081302460212d007593acdd8c5968570b"
+        },
+        {
+          "path": "cjs/scheduler.native.production.js",
+          "bytes": 10869,
+          "sha256": "f6e15b1a0f7912a8dbae536f037b9c059026742f3dfe740b37bd03fc7d816d65"
+        },
+        {
+          "path": "cjs/scheduler.production.js",
+          "bytes": 10181,
+          "sha256": "679adff761d31e9426604f80c0e99be44a3e6f4c6834b0218ecf0312a67c171f"
+        },
+        {
+          "path": "index.js",
+          "bytes": 194,
+          "sha256": "145965504d60007bc25486ab930b0367867dcd5d579ccd343c148d69349a7cfb"
+        },
+        {
+          "path": "index.native.js",
+          "bytes": 208,
+          "sha256": "f1c2fea33a9252ccba1f7c7a9310ea7c0e82f3cff1bc7c693ff153bd54175b25"
+        },
+        {
+          "path": "package.json",
+          "bytes": 564,
+          "sha256": "393bb96b7e481bf50189a1a02c7e0e7f4d01acba5abc6fbe7d214638624462fc"
+        },
+        {
+          "path": "unstable_mock.js",
+          "bytes": 222,
+          "sha256": "152be57d0705d6043d06bda4a5b35e7c03e4cbb2b4caf3d4ae6592db3f4c5bf8"
+        },
+        {
+          "path": "unstable_post_task.js",
+          "bytes": 232,
+          "sha256": "2aa725364b0efa1772c01cd978ac888b655711645768bdcf5e885a0c4e435ef2"
+        }
+      ]
+    }
+  }
+}

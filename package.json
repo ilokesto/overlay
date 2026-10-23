@@ -6,12 +6,26 @@
     "typecheck": "tsc --noEmit -p tsconfig.test.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:tooling": "node --test tests/tooling/*.test.mjs",
+    "docs:prepare": "pnpm build",
+    "docs:dev": "pnpm docs:prepare && pnpm --dir website dev",
+    "docs:build": "pnpm docs:prepare && pnpm --dir website build",
+    "docs:typecheck": "pnpm docs:prepare && pnpm --dir website typecheck",
+    "docs:test": "pnpm --dir website test",
+    "docs:start": "pnpm --dir website start",
+    "docs:publication:verify": "node scripts/docs-publication.mjs verify && node scripts/docs-runtime.mjs verify",
+    "docs:publication:capture": "node scripts/docs-publication.mjs capture",
+    "docs:publication:promote": "node scripts/docs-publication.mjs promote",
+    "migrate:verify": "node scripts/verify-migration.mjs",
+    "release:verify": "node scripts/release-verify.mjs",
+    "changeset": "changeset",
+    "changeset:status": "changeset status",
+    "version-packages": "changeset version && pnpm install --lockfile-only"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ilokesto/ilokesto.git",
-    "directory": "packages/overlay"
+    "url": "git+https://github.com/ilokesto/overlay.git"
   },
   "homepage": "https://ilokesto.ayden94.com/en/overlay",
   "sideEffects": false,
@@ -39,22 +53,25 @@
   "author": "Jeong Jinho <wpfekdml@me.com>",
   "license": "MIT",
   "dependencies": {
-    "@ilokesto/store": "workspace:^2.0.1"
+    "@ilokesto/store": "^2.0.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^22.19.1",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
-    "jsdom": "^29.1.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "typescript": "^6.0.2",
-    "vitest": "^4.1.10"
-  }
+    "@changesets/cli": "2.31.1",
+    "@testing-library/jest-dom": "6.10.0",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.4",
+    "@types/node": "22.20.1",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "jsdom": "29.1.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10",
+    "yaml": "2.8.2"
+  },
+  "packageManager": "pnpm@10.17.1"
 }

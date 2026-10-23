@@ -7,7 +7,7 @@
 ## 문서
 
 - 전체 문서: [English](https://ilokesto.ayden94.com/en/overlay) · [한국어](https://ilokesto.ayden94.com/ko/overlay)
-- 소스: [packages/overlay](https://github.com/ilokesto/ilokesto/tree/main/packages/overlay)
+- 소스: [ilokesto/overlay](https://github.com/ilokesto/overlay)
 - npm: [@ilokesto/overlay](https://www.npmjs.com/package/@ilokesto/overlay)
 
 이 패키지는 provider-scoped overlay core, built-in host, item lifecycle 관리, adapter 주입 구조를 제공합니다. modal이나 toast 의미론은 의도적으로 코어에 넣지 않아서, 상위 패키지가 같은 runtime 위에서 자신만의 동작을 구현할 수 있게 되어 있습니다.
@@ -402,11 +402,33 @@ Effect 교체, StrictMode 재실행, provider unmount 시 item이 store에 남�
 
 ## 개발
 
+저장소 루트에서 Node 22와 pnpm 10.17.1을 사용합니다. 다른 패키지의 체크아웃은 필요하지 않습니다.
+
 ```bash
-pnpm install
-pnpm run build
+pnpm install --frozen-lockfile
+pnpm build
+pnpm typecheck
 pnpm test
+pnpm test:tooling
+pnpm migrate:verify
+pnpm docs:publication:verify
+pnpm docs:typecheck
+pnpm docs:build
+pnpm docs:test
+pnpm docs:start --hostname 127.0.0.1 --port 0
 ```
+
+문서 테스트 브라우저는 `pnpm --dir website exec playwright install chromium`으로 설치합니다.
+한영 원본 문서는 `docs/`, 로컬 렌더러는 `website/`에 있습니다.
+공개 예제는 `docs-publication/active.json`의 정확한 npm 버전을 사용하며,
+`/en/overlay/next`와 `/ko/overlay/next`는 현재 체크아웃을 사용합니다.
+기존 schema 1/2 아카이브는 변경하지 않습니다. 새 캡처는 명시적인 schema 3
+독립 저장소 레이아웃과 검토된 릴리스 카탈로그 항목을 요구합니다.
+
+`pnpm release:verify --sha <전체-SHA>`는 배포 없이 실제 GitHub Verify 결과,
+패키지 아티팩트, main과 레지스트리 상태를 검증합니다. 원격 저장소 준비와
+정확한 SHA의 CI 검증 전에는 릴리스 자격을 부여하지 않습니다.
+체크인된 정책에서 배포를 비활성화했으며 Changesets 릴리스 PR 생성은 배포하지 않습니다.
 
 빌드 결과물은 `dist` 디렉터리에 생성됩니다. 테스트는 Vitest와 @testing-library/react로 실행됩니다.
 

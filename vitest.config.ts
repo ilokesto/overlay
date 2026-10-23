@@ -5,5 +5,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
+    // The standalone repository also carries node --test suites under
+    // tests/tooling and website/tests; they run through their own scripts.
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
   },
 });
