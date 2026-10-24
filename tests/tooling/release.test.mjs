@@ -107,8 +107,17 @@ async function releaseFixture(t) {
   };
   const registry = async () => ({ published: state.published,
     metadata: { name: manifest.name, version: manifest.version, dist: { integrity: 'sha512-Zml4dHVyZQ==' } } });
-  return { root, head, state, options: { root, sha: head, github, registry, downloadArtifact: async () => bytes } };
+  return { root, head, state, artifacts, packed, options: { root, sha: head, github, registry, downloadArtifact: async () => bytes } };
 }
+
+test('packRelease: real pnpm pack -> normalizes gzip OS byte and persists returned archive', async t => {
+  const fixture = await releaseFixture(t);
+  const saved = await readFile(path.join(fixture.artifacts, fixture.packed.file));
+
+  assert.equal(fixture.packed.bytes[9], 3);
+  assert.deepEqual(fixture.packed.bytes, saved);
+  assert.equal(fixture.packed.packSha256, hash(saved));
+});
 
 test('release verification: real pack and exact downloaded artifact -> read-only eligibility', async t => {
   const fixture = await releaseFixture(t);
