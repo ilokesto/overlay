@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "ilokesto/overlay",
-  "publishingEnabled": false,
-  "releasePrEnabled": false,
+  "publishingEnabled": true,
+  "releasePrEnabled": true,
   "distTag": "latest"
 }

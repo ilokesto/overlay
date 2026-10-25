@@ -100,7 +100,10 @@ Effect 교체, StrictMode 재실행, provider unmount만으로 store 아이템�
 
 `docs/`는 한영 원본, `website/`는 렌더러입니다. 공개 예제는 `docs-publication/active.json`의 npm 버전, `/en/overlay/next`와 `/ko/overlay/next`는 현재 체크아웃을 사용합니다.
 
-Schema 1/2 아카이브는 불변이며 새 캡처는 명시적인 schema 3와 검토된 카탈로그 항목이 필요합니다. `pnpm release:verify --sha <full-SHA>`는 읽기 전용이며 원격 준비와 exact-SHA CI 검증이 필요합니다. 현재 정책은 publishing을 비활성화하며 Changesets 릴리스 PR 생성은 배포가 아닙니다.
+Schema 1/2 아카이브는 불변이며 새 캡처는 명시적인 schema 3와 검토된 카탈로그 항목이 필요합니다. `pnpm release:verify --sha <full-SHA>`는 읽기 전용이며 원격 준비와 exact-SHA CI 검증이 필요합니다. PR은 Verify CI를 실행합니다. main 병합은 Changesets 릴리스 PR을 생성·갱신하며,
+릴리스 PR을 병합하면 GitHub Actions가 성공한 Verify의 정확한 아티팩트만 게시합니다.
+적용 전에 `Allow GitHub Actions to create and approve pull requests`를 켜고
+`Production` 환경에 `NPM_TOKEN`을 설정하세요. 로컬 게시나 문서 배포는 하지 않습니다.
 
 라이선스: MIT.
 

@@ -100,7 +100,10 @@ Docs: `pnpm docs:start`. Browser setup: `pnpm --dir website exec playwright inst
 
 `docs/` holds bilingual originals; `website/` renders them. Released examples use the npm identity in `docs-publication/active.json`; `/en/overlay/next` and `/ko/overlay/next` use this checkout.
 
-Schema 1/2 archives are immutable; new captures need explicit schema 3 and a reviewed catalog entry. `pnpm release:verify --sha <full-SHA>` is read-only and requires remote bootstrap and exact-SHA CI verification. Checked-in policy disables publishing; Changesets release PR generation does not publish.
+Schema 1/2 archives are immutable; new captures need explicit schema 3 and a reviewed catalog entry. `pnpm release:verify --sha <full-SHA>` is read-only and requires remote bootstrap and exact-SHA CI verification. Pull requests run Verify CI. Main merges create or update a Changesets release PR; merging
+that PR publishes only the exact successful Verify artifact through GitHub Actions. Enable
+`Allow GitHub Actions to create and approve pull requests` and configure `NPM_TOKEN` in the
+`Production` environment before rollout. Never publish locally or deploy documentation.
 
 License: MIT.
 
