@@ -1,48 +1,14 @@
 # @ilokesto/overlay
 
-**English** | [한국어](./README.ko.md)
+A headless React overlay runtime for hosting custom layers with adapters and provider-scoped stores.
 
-A small React overlay runtime built on top of `@ilokesto/store`.
+[![npm version](https://img.shields.io/npm/v/%40ilokesto%2Foverlay?style=flat&color=555)](https://www.npmjs.com/package/@ilokesto/overlay)
 
-This package provides a provider-scoped overlay core with a built-in host, item lifecycle management, and adapter injection. It is intentionally headless about modal or toast semantics so higher-level packages can build on top of the same runtime without leaking behavior into the core.
+[Docs](https://ilokesto.ayden94.com/en/overlay) | [API](./docs/reference/entrypoints.mdx) | [한국어](./README.ko.md)
 
-## Documentation
-
-- Full docs: [English](https://ilokesto.ayden94.com/en/overlay) · [한국어](https://ilokesto.ayden94.com/ko/overlay)
-- Source: [ilokesto/overlay](https://github.com/ilokesto/overlay)
-- npm: [@ilokesto/overlay](https://www.npmjs.com/package/@ilokesto/overlay)
-
-## Features
-
-- **Provider-scoped runtime** — no global singleton; each `OverlayProvider` has its own store
-- **Isolated contexts** — `createOverlayContext()` for multiple independent overlay stacks
-- **Promise-based async overlays** — `display()` returns a Promise that resolves after exit animation
-- **Two-phase dismiss** — `close()` triggers animation, `remove()` actually unmounts
-- **Reject support** — `reject(id, reason)` rejects the Promise on `remove()` for error flows
-- **Batch close** — `closeAll()` transitions all overlays to `closing` for batch exit animation
-- **Adapter lifecycle hooks** — `onOpen`, `onClosing`, `onUnmount` via `useLifecycle`
-- **Adapter plugins** — Provider-level common policies (logging, analytics, accessibility)
-- **ID deduplication** — `open({ id })` is idempotent; no dangling promises
-- **Single-item subscription** — `useOverlayItem(id)` with `Object.is` bailout
-- **Open before Provider mount** — `store.open()` works without a mounted Provider
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Promise-Based Overlays](#promise-based-overlays)
-- [Two-Phase Dismiss Lifecycle](#two-phase-dismiss-lifecycle)
-- [Rejecting an Overlay](#rejecting-an-overlay)
-- [Closing All Overlays](#closing-all-overlays)
-- [Overlay ID and Deduplication](#overlay-id-and-deduplication)
-- [Opening Overlays Before Provider Mount](#opening-overlays-before-provider-mount)
-- [Isolated Overlay Contexts](#isolated-overlay-contexts)
-- [Adapter Lifecycle Hooks](#adapter-lifecycle-hooks)
-- [Adapter Plugins](#adapter-plugins)
-- [API Reference](#api-reference)
-- [Source Layout](#source-layout)
-- [Development](#development)
-- [License](#license)
+- Isolated stacks with `OverlayProvider` and `createOverlayContext()`.
+- Typed `display()` results with explicit `close()` / `remove()` lifecycle.
+- Adapter lifecycle hooks, provider plugins, and single-item subscriptions.
 
 ## Installation
 
@@ -50,359 +16,66 @@ This package provides a provider-scoped overlay core with a built-in host, item 
 pnpm add @ilokesto/overlay react
 ```
 
-or
+## Quick start
 
-```bash
-npm install @ilokesto/overlay react
-```
-
-## Basic Usage
+This example opens a non-modal notice, then closes and removes it immediately when acknowledged.
 
 ```tsx
 import { OverlayProvider, useOverlay, type OverlayAdapterMap } from '@ilokesto/overlay';
 
 const adapters: OverlayAdapterMap = {
-  modal: ({ isOpen, close, useLifecycle, ...props }) => {
-    useLifecycle({
-      onOpen: () => { document.body.style.overflow = 'hidden'; },
-      onUnmount: () => { document.body.style.overflow = ''; },
-    });
-
-    if (!isOpen) return null;
+  notice: ({ close, remove, message }) => {
+    const finish = () => {
+      close(true);
+      remove();
+    };
 
     return (
-      <div role="dialog" aria-modal="true">
-        <h1>{String(props.title)}</h1>
-        <button onClick={() => close(true)}>Confirm</button>
-      </div>
+      <aside aria-label="Notice">
+        <p>{String(message)}</p>
+        <button onClick={finish}>Got it</button>
+      </aside>
     );
   },
 };
 
-function ExampleButton() {
+function NoticeButton() {
   const { display } = useOverlay();
 
-  const handleClick = async () => {
-    const result = await display<boolean>({
-      type: 'modal',
-      props: { title: 'Delete this item?' },
+  async function showNotice() {
+    const acknowledged = await display<boolean>({
+      type: 'notice',
+      props: { message: 'Your changes are saved.' },
     });
+    console.log(acknowledged);
+  }
 
-    console.log(result); // true or undefined
-  };
-
-  return <button onClick={handleClick}>Open</button>;
+  return <button onClick={() => void showNotice()}>Show notice</button>;
 }
 
 export function App() {
   return (
     <OverlayProvider adapters={adapters}>
-      <ExampleButton />
+      <NoticeButton />
     </OverlayProvider>
   );
 }
 ```
 
-## Promise-Based Overlays
+`close()` only starts closing; the adapter must call `remove()` to settle the promise. With exit motion, remove after it finishes. The core does not supply focus trapping, Escape handling, scroll locking, or modal accessibility. Use `@ilokesto/modal` for ordinary dialogs.
 
-`display()` returns a `Promise<TResult | undefined>` that resolves when the overlay is fully removed (after exit animation):
+## Further reading
 
-```tsx
-const confirmed = await display<boolean>({ type: 'modal', props: { ... } });
-// confirmed === true  → user clicked confirm
-// confirmed === false → user clicked cancel
-// confirmed === undefined → overlay was removed without close
-```
+- [Quick-start walkthrough](./docs/quick-start.mdx)
+- [Store commands, ID deduplication, and rejection](./docs/reference/create-overlay-store.mdx)
+- [Provider and context isolation](./docs/advanced/provider-scoping.mdx)
+- [Adapter hooks and plugin precedence](./docs/reference/adapter-contracts.mdx)
+- [Closing and promise settlement](./docs/advanced/lifecycle-model.mdx)
 
-For fire-and-forget usage, use `open()` which returns just the `id`:
+<details>
+<summary>Development</summary>
 
-```tsx
-const id = open({ type: 'toast', props: { message: 'Hello' } });
-```
-
-## Two-Phase Dismiss Lifecycle
-
-The dismiss lifecycle has two phases, giving adapters full control over exit animation timing:
-
-| Step | Function | What happens |
-|---|---|---|
-| 1 | `close(id, result)` | Status transitions to `closing`. `isOpen` becomes `false`. Adapter plays exit animation. |
-| 2 | `remove(id)` | Item is removed from the store. Promise resolves with `closeResult`. |
-
-The adapter receives both `close` and `remove` as props. It calls `close()` to trigger the animation, then `remove()` on animation end:
-
-```tsx
-const adapter = ({ isOpen, close, remove }) => {
-  return (
-    <div
-      className={isOpen ? 'fade-in' : 'fade-out'}
-      onAnimationEnd={() => { if (!isOpen) remove(); }}
-    >
-      <button onClick={() => close(true)}>Confirm</button>
-    </div>
-  );
-};
-```
-
-## Rejecting an Overlay
-
-`reject(id, reason)` transitions an overlay to `closing` (same as `close`), but when the adapter later calls `remove(id)`, the `display()` Promise is **rejected** with the reason instead of being resolved.
-
-This is useful when an overlay represents a flow that can fail — for example, a login dialog cancelled by a timeout:
-
-```tsx
-function LoginButton() {
-  const { open, reject, remove } = useOverlay();
-
-  const handleLogin = () => {
-    const id = open({ type: 'modal', props: { title: 'Sign in' } });
-
-    setTimeout(() => {
-      reject(id, new Error('Login timed out'));
-      remove(id);
-    }, 5000);
-  };
-
-  return <button onClick={handleLogin}>Sign in</button>;
-}
-```
-
-The two-phase dismiss lifecycle is preserved: `reject` only transitions the status to `closing`; the adapter plays its exit animation and then calls `remove(id)`, which is when the Promise actually rejects.
-
-## Closing All Overlays
-
-`closeAll()` transitions every open overlay to `closing` in one call. Unlike `clear()`, it does **not** remove items from the store or settle promises — the adapter still controls the unmount timing for each overlay.
-
-| | `closeAll()` | `clear()` |
-|---|---|---|
-| Status | All `open` → `closing` | Items removed immediately |
-| Items in store | Remains | Emptied |
-| Promises | Pending (settled on `remove`) | Settled immediately |
-| Use case | Batch exit animation | Emergency cleanup |
-
-```tsx
-function CloseAllButton() {
-  const { closeAll } = useOverlay();
-  return <button onClick={closeAll}>Close all</button>;
-}
-```
-
-## Overlay ID and Deduplication
-
-When `open()` is called with an explicit `id`, the store guards against duplicates:
-
-- If an overlay with the same `id` is already open (or closing), `open()` returns the **existing** `OverlayRequest` — the same `id` and the same `Promise`.
-- No second item is added to the store.
-- The `Promise` is not duplicated, so there is no dangling promise.
-
-This makes `open({ id, ... })` idempotent — calling it multiple times with the same `id` while the overlay is active has no side effect.
-
-Once the overlay is removed (or cleared), the `id` is released and can be reused for a new overlay.
-
-## Opening Overlays Before Provider Mount
-
-`store.open()` can be called before `OverlayProvider` is mounted — the item is stored immediately, and `useSyncExternalStore` picks it up on the Provider's first render. No event emitter is needed:
-
-```tsx
-const store = createOverlayStore();
-
-// Called before any Provider exists
-store.open({ id: 'early', type: 'modal' });
-
-// Later — the item renders on first mount
-<OverlayProvider adapters={adapters} store={store}>
-  <App />
-</OverlayProvider>
-```
-
-## Isolated Overlay Contexts
-
-By default, `OverlayProvider`, `useOverlay`, `useOverlayItems`, and `useOverlayItem` all share a single React context. If you need multiple independent overlay stacks (e.g., a main app and an embedded widget), use `createOverlayContext()`:
-
-```tsx
-import { createOverlayContext } from '@ilokesto/overlay';
-
-const mainOverlay = createOverlayContext();
-const widgetOverlay = createOverlayContext();
-
-// Each context has its own Provider, store, and hooks — fully isolated.
-<MainApp>
-  <mainOverlay.Provider adapters={adapters}>
-    <Sidebar />
-  </mainOverlay.Provider>
-</MainApp>
-
-<Widget>
-  <widgetOverlay.Provider adapters={adapters}>
-    <WidgetContent />
-  </widgetOverlay.Provider>
-</Widget>
-```
-
-Each context instance provides:
-- `Provider` — context provider with built-in `OverlayHost`
-- `useOverlay` — command API (open, close, closeAll, reject, remove, clear)
-- `useOverlayItems` — subscribes to the full item list
-- `useOverlayItem(id)` — subscribes to a single item
-
-The default exports (`OverlayProvider`, `useOverlay`, etc.) are a pre-created instance of `createOverlayContext()` for backward compatibility.
-
-## Adapter Lifecycle Hooks
-
-Adapters can register side-effect callbacks via the `useLifecycle` prop provided in `OverlayRenderProps`:
-
-```tsx
-const modalAdapter: OverlayAdapterComponent = ({ useLifecycle, isOpen, close }) => {
-  useLifecycle({
-    onOpen: (id) => { document.body.style.overflow = 'hidden'; },
-    onClosing: (id) => { /* status just transitioned to "closing" */ },
-    onUnmount: (id) => { document.body.style.overflow = ''; },
-  });
-
-  if (!isOpen) return null;
-  return <div role="dialog">...</div>;
-};
-```
-
-The host calls hooks based on status transitions:
-
-| Hook | When | Guaranteed |
-|---|---|---|
-| `onOpen(id, item)` | First mount with `status: "open"` | Once per open |
-| `onClosing(id, item)` | `open → closing` transition | Once per close |
-| `onUnmount(id)` | Component unmount (after `remove`) | Once per lifecycle |
-
-If an adapter does not call `useLifecycle`, no hooks fire — the behavior is opt-in.
-
-## Adapter Plugins
-
-Plugins provide Provider-level common policies — logging, analytics, or default accessibility behavior — without modifying each adapter individually:
-
-```tsx
-import type { OverlayPlugin } from '@ilokesto/overlay';
-
-const loggingPlugin: OverlayPlugin = {
-  name: 'logging',
-  onOpen: (id, item) => console.log('open', id, item.type),
-  onClosing: (id, item) => console.log('closing', id, item.type),
-  onUnmount: (id) => console.log('unmount', id),
-};
-
-<OverlayProvider adapters={adapters} plugins={[loggingPlugin]}>
-  <App />
-</OverlayProvider>
-```
-
-### Priority Rule
-
-- If an adapter registers a hook for a phase via `useLifecycle`, **that hook takes priority** — plugins are skipped for that phase.
-- If an adapter does not register a hook for a phase, **all plugins fire in registration order**.
-
-This means an adapter can override specific phases (e.g., custom focus trap) while plugins handle the rest (e.g., logging).
-
-## API Reference
-
-### `createOverlayStore()`
-
-Creates a provider-scoped overlay store. Returns `OverlayStoreApi` with `open`, `close`, `closeAll`, `reject`, `remove`, `clear`, `subscribe`, `getSnapshot`, `getInitialSnapshot`.
-
-### `createOverlayContext()`
-
-Creates an isolated React context. Returns `{ Provider, useOverlay, useOverlayItems, useOverlayItem }`.
-
-### `OverlayProvider`
-
-Context provider with built-in `OverlayHost`. Props: `adapters`, `children`, `store?`, `plugins?`.
-
-### `useOverlay()`
-
-Returns `{ display, open, close, closeAll, reject, remove, clear }`.
-
-### `useOverlayItems()`
-
-Returns `ReadonlyArray<OverlayItem>` — the current overlay item list.
-
-### `useOverlayItem(id)`
-
-Returns `OverlayItem | undefined` — subscribes to a single item by id with `Object.is` bailout.
-
-### Types
-
-- `OverlayStoreApi`, `OverlayProviderProps`, `OverlayItem`, `OverlayRequest`, `DisplayOptions`, `OverlayId`, `OverlayStatus`, `OverlayState`
-- `OverlayAdapterComponent`, `OverlayAdapterMap`, `OverlayRenderProps`, `OverlayAdapterHooks`
-- `OverlayPlugin`
-- `OverlayContextInstance`, `OverlayContextValue`
-- `UseOverlayReturn`
-
-## Source Layout
-
-```text
-src/
-  core/
-    createOverlayStore.ts
-    createOverlayContext.tsx
-    OverlayProvider.tsx
-    OverlayHost.tsx
-    OverlayItemRenderer.tsx
-    useOverlayLifecycle.ts
-    useOverlay.ts
-    useOverlayItems.ts
-    useOverlayItem.ts
-  contracts/
-    adapter.ts
-    overlay.ts
-    plugin.ts
-  index.ts
-```
-
-### Responsibilities
-
-**`src/core`** — runtime implementation:
-- `createOverlayStore.ts` — store with `open`, `close`, `closeAll`, `reject`, `remove`, `clear`
-- `createOverlayContext.tsx` — factory for isolated React contexts
-- `OverlayProvider.tsx` — default context instance re-export (backward compatible)
-- `OverlayHost.tsx` — subscribes to items and renders a keyed list
-- `OverlayItemRenderer.tsx` — selects the adapter and binds runtime props over user props
-- `useOverlayLifecycle.ts` — registers adapter hooks and dispatches phases, falling back to plugins per phase
-- `useOverlay.ts` — command API hook
-- `useOverlayItems.ts` / `useOverlayItem.ts` — subscription hooks with `useSyncExternalStore`
-
-**`src/contracts`** — shared types:
-- `adapter.ts` — `OverlayRenderProps`, `OverlayAdapterComponent`, `OverlayAdapterMap`, `OverlayAdapterHooks`
-- `overlay.ts` — `OverlayItem`, `OverlayStoreApi`, `DisplayOptions`, `OverlayProviderProps`
-- `plugin.ts` — `OverlayPlugin`
-
-### Dependency Direction
-
-- `core/*` depends on `contracts/*`
-- `contracts/overlay.ts` depends on `contracts/adapter.ts`
-- `contracts/adapter.ts` does not depend on runtime code
-- Adapter packages (modal, toast) should depend on `@ilokesto/overlay`
-- `@ilokesto/overlay` should not import modal or toast implementations directly
-
-The core owns lifecycle and hosting; adapter packages own semantics and presentation.
-
-### Reading the lifecycle
-
-Follow `createOverlayStore` for state and promise ownership, then `OverlayHost`
-for the rendered list, `OverlayItemRenderer` for adapter binding, and
-`useOverlayLifecycle` for React phase notifications.
-
-```text
-open -> store adds item/request -> renderer mounts -> onOpen
-close/reject -> store marks closing -> onClosing -> adapter exit animation
-remove -> store settles request and removes item -> renderer cleanup -> onUnmount
-```
-
-`closeAll` only marks items as closing; `clear` settles and removes them.
-Adapter hooks take precedence over plugins separately for each phase. Plugins
-run in registration order. Effect replacement, StrictMode replay and provider
-unmount do not count as removal while the item remains in its store. An item
-already closing before mount does not invent an open-to-closing transition.
-
-## Development
-
-Use Node 22 and pnpm 10.17.1 from this repository root. No sibling checkout is required.
+Use Node 22 and pnpm 10.17.1 from this repository root.
 
 ```bash
 pnpm install --frozen-lockfile
@@ -415,23 +88,20 @@ pnpm docs:publication:verify
 pnpm docs:typecheck
 pnpm docs:build
 pnpm docs:test
-pnpm docs:start --hostname 127.0.0.1 --port 0
 ```
 
-Install the docs test browser once with `pnpm --dir website exec playwright install chromium`.
-Canonical bilingual docs live in `docs/`; `website/` owns the local renderer.
-Released examples use the exact npm identity in `docs-publication/active.json`, while
-`/en/overlay/next` and `/ko/overlay/next` use this checkout.
-The old schema 1/2 archives are immutable. New captures require the explicit schema 3
-standalone source layout and a reviewed release catalog entry.
+`store.open()` can run before provider mount. Hooks must run inside their matching provider.
 
-`pnpm release:verify --sha <full-SHA>` checks live GitHub Verify evidence, its packed
-artifact, main and registry state without publishing. It is intentionally not eligible
-before remote bootstrap and exact-SHA CI verification. Publishing is disabled in the
-checked-in policy; Changesets release-PR generation does not publish.
+Read source in order: `createOverlayStore` → `OverlayHost` → `OverlayItemRenderer` → `useOverlayLifecycle`.
 
-Build outputs are generated in the `dist` directory. Tests run with Vitest and @testing-library/react.
+Effect replacement, StrictMode replay, and provider unmount do not remove stored items. Items already closing before mount do not invent an open-to-closing notification.
 
-## License
+Docs: `pnpm docs:start`. Browser setup: `pnpm --dir website exec playwright install chromium`.
 
-MIT
+`docs/` holds bilingual originals; `website/` renders them. Released examples use the npm identity in `docs-publication/active.json`; `/en/overlay/next` and `/ko/overlay/next` use this checkout.
+
+Schema 1/2 archives are immutable; new captures need explicit schema 3 and a reviewed catalog entry. `pnpm release:verify --sha <full-SHA>` is read-only and requires remote bootstrap and exact-SHA CI verification. Checked-in policy disables publishing; Changesets release PR generation does not publish.
+
+License: MIT.
+
+</details>
