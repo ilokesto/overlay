@@ -1,6 +1,9 @@
 {
   "name": "@ilokesto/overlay",
   "version": "2.0.1",
+  "engines": {
+    "node": ">=24.22.1"
+  },
   "scripts": {
     "build": "rm -rf dist && tsc",
     "typecheck": "tsc --noEmit -p tsconfig.test.json",

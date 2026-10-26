@@ -75,7 +75,7 @@ export function App() {
 <details>
 <summary>개발</summary>
 
-이 저장소 루트에서 Node 22와 pnpm 10.17.1을 사용하세요.
+이 저장소 루트에서 Node 24.22.1과 pnpm 10.17.1을 사용하세요.
 
 ```bash
 pnpm install --frozen-lockfile
