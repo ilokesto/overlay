@@ -71,11 +71,11 @@ Use Node 24.22.1 and pnpm 10.17.1 from this repository root.
 
 ```bash
 pnpm install --frozen-lockfile
-pnpm build
 pnpm typecheck
 pnpm test
-pnpm test:tooling
 ```
+
+`typecheck` checks library code. `test` builds once and runs `test:unit`, `test:types` (test compiler checks), `test:tooling`. Runtime tests live in `tests/unit`, fixtures/setup in `tests/fixtures`, and Node tooling tests in `tests/tooling`.
 
 `store.open()` can run before provider mount. Hooks must run inside their matching provider.
 

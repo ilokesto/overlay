@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { createOverlayContext } from "./createOverlayContext";
-import type { OverlayAdapterMap } from "../contracts/adapter";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import type { OverlayAdapterMap } from "../../../src/contracts/adapter";
 
 const stubAdapters: OverlayAdapterMap = {
   modal: () => null,

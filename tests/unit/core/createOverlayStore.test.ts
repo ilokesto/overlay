@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { createOverlayStore } from "./createOverlayStore";
+import { createOverlayStore } from "../../../src/core/createOverlayStore";
 
 describe("createOverlayStore", () => {
   describe("open", () => {

@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import type { OverlayAdapterComponent } from "../contracts/adapter";
-import { createOverlayContext } from "./createOverlayContext";
-import { createOverlayStore } from "./createOverlayStore";
+import type { OverlayAdapterComponent } from "../../../src/contracts/adapter";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import { createOverlayStore } from "../../../src/core/createOverlayStore";
 
 function renderOverlay(
   Adapter: OverlayAdapterComponent,

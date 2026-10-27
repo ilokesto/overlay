@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { act, render } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createOverlayContext } from "./createOverlayContext";
-import { createOverlayStore } from "./createOverlayStore";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import { createOverlayStore } from "../../../src/core/createOverlayStore";
 
 afterEach(() => {
   vi.restoreAllMocks();

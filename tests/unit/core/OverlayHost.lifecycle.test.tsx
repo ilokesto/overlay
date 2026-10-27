@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, act } from "@testing-library/react";
 import { StrictMode } from "react";
-import { createOverlayContext } from "./createOverlayContext";
-import { createOverlayStore } from "./createOverlayStore";
-import type { OverlayAdapterComponent, OverlayAdapterHooks } from "../contracts/adapter";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import { createOverlayStore } from "../../../src/core/createOverlayStore";
+import type { OverlayAdapterComponent, OverlayAdapterHooks } from "../../../src/contracts/adapter";
 
 function createTrackingAdapter(): {
   Adapter: OverlayAdapterComponent;

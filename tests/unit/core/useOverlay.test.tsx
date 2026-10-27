@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { OverlayProvider, useOverlay, useOverlayItems } from "./OverlayProvider";
-import type { OverlayAdapterMap } from "../contracts/adapter";
+import { OverlayProvider, useOverlay, useOverlayItems } from "../../../src/core/OverlayProvider";
+import type { OverlayAdapterMap } from "../../../src/contracts/adapter";
 
 const stubAdapters: OverlayAdapterMap = {
   modal: () => null,
