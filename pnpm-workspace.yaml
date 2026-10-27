@@ -1,18 +1,7 @@
 packages:
   - .
-  - website
-  - docs-publication/runtime
 
 linkWorkspacePackages: false
-
-overrides:
-  # Retain the frozen released example graph without constraining the library's
-  # current ^2.0.1 dependency or substituting any local package.
-  '@ilokesto/overlay@2.0.0>@ilokesto/store': 2.0.0
-  # Frozen execution baseline: the monorepo and the verified standalone
-  # reference lock mdast-util-to-markdown 2.1.2 for the fumadocs processed
-  # markdown. 2.2.0 overflows the loader stack on Overlay quick-start pages.
-  mdast-util-to-markdown: 2.1.2
 
 onlyBuiltDependencies:
   - esbuild
