@@ -6,7 +6,7 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
     // The standalone repository also carries node --test suites under
-    // tests/tooling and website/tests; they run through their own scripts.
+    // tests/tooling; they run through their own script.
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
   },
 });
