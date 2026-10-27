@@ -1,9 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { render, act } from "@testing-library/react";
 import { useState } from "react";
-import { createOverlayStore } from "./createOverlayStore";
-import { createOverlayContext } from "./createOverlayContext";
-import type { OverlayAdapterComponent } from "../contracts/adapter";
+import { createOverlayStore } from "../../../src/core/createOverlayStore";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import type { OverlayAdapterComponent } from "../../../src/contracts/adapter";
 
 describe("open before Provider mount", () => {
   it("renders items that were opened before Provider mounted", () => {

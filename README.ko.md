@@ -71,11 +71,11 @@ export function App() {
 
 ```bash
 pnpm install --frozen-lockfile
-pnpm build
 pnpm typecheck
 pnpm test
-pnpm test:tooling
 ```
+
+`typecheck`는 라이브러리 코드를 검사합니다. `test`는 한 번 빌드한 뒤 `test:unit`, `test:types`(테스트 컴파일 검사), `test:tooling`를 실행합니다. 런타임 테스트는 `tests/unit`, fixture·setup은 `tests/fixtures`, Node 도구 테스트는 `tests/tooling`에 있습니다.
 
 `store.open()`은 provider 마운트 전에도 가능합니다. Hook은 일치하는 provider 안에서 사용하세요.
 

@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, act } from "@testing-library/react";
-import { createOverlayContext } from "./createOverlayContext";
-import type { OverlayAdapterComponent } from "../contracts/adapter";
-import type { OverlayPlugin } from "../contracts/plugin";
+import { createOverlayContext } from "../../../src/core/createOverlayContext";
+import type { OverlayAdapterComponent } from "../../../src/contracts/adapter";
+import type { OverlayPlugin } from "../../../src/contracts/plugin";
 
 describe("adapter plugins", () => {
   it("plugin hooks fire when adapter does not register its own hooks", () => {
