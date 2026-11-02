@@ -1,5 +1,11 @@
 # @ilokesto/overlay
 
+## 2.0.3
+
+### Patch Changes
+
+- b3d5fc2: Document the overlay API, lifecycle, and owned option/result fields in published TypeScript declarations.
+
 ## 2.0.2
 
 ### Patch Changes
