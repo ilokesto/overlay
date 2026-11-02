@@ -10,19 +10,49 @@ import type { OverlayId, OverlayItem, OverlayProviderProps, OverlayStoreApi } fr
 import type { OverlayPlugin } from "../contracts/plugin";
 import type { UseOverlayReturn } from "./useOverlay";
 
+/** Provider-scoped runtime dependencies consumed by the host and hooks. */
 export interface OverlayContextValue {
+  /** Store shared by this scope's renderers and commands. */
   readonly store: OverlayStoreApi;
+  /** Adapter registry indexed by item type. */
   readonly adapters: OverlayAdapterMap;
+  /** Lifecycle observers used for phases not handled by an adapter. */
   readonly plugins: ReadonlyArray<OverlayPlugin>;
 }
 
+/** A matching provider and hooks isolated from every other context instance. */
 export interface OverlayContextInstance {
+  /** Provider rendering its children and one host with the supplied adapters. */
   readonly Provider: FC<OverlayProviderProps>;
+  /** Reads commands for the nearest matching provider; throws outside it. */
   readonly useOverlay: () => UseOverlayReturn;
+  /** Subscribes to all items in the nearest matching provider. */
   readonly useOverlayItems: () => ReadonlyArray<OverlayItem>;
+  /** Subscribes to a single item, returning undefined when absent or on the server. */
   readonly useOverlayItem: (id: OverlayId) => OverlayItem | undefined;
 }
 
+/**
+ * @description Creates an independent React overlay scope with a provider and
+ * matching hooks. Each provider creates a store unless one is supplied and mounts
+ * its own host. Hooks throw outside a provider from this same context instance.
+ * @returns {OverlayContextInstance} Isolated provider and hooks.
+ * - Provider `FC<OverlayProviderProps>` - Hosts adapters and content using a provider-scoped store.
+ * - useOverlay `() => UseOverlayReturn` - Reads store-bound overlay commands.
+ * - useOverlayItems `() => ReadonlyArray<OverlayItem>` - Subscribes to all queued items.
+ * - useOverlayItem `(id: OverlayId) => OverlayItem | undefined` - Subscribes to one identity, absent on the server.
+ * @example
+ * ```tsx
+ * const notices = createOverlayContext();
+ * function NoticeButton() {
+ *   const overlay = notices.useOverlay();
+ *   return <button onClick={() => overlay.open({ type: "notice" })}>Show</button>;
+ * }
+ * function App() {
+ *   return <notices.Provider adapters={adapters}><NoticeButton /></notices.Provider>;
+ * }
+ * ```
+ */
 export function createOverlayContext(): OverlayContextInstance {
   const context = createContext<OverlayContextValue | null>(null);
 
