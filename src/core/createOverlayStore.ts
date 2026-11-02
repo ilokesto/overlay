@@ -23,6 +23,29 @@ function createOverlayItem(options: DisplayOptions, id: OverlayId): OverlayItem 
   };
 }
 
+/**
+ * @description Creates an isolated overlay queue whose requests settle only on
+ * removal or clear. Reopening a pending id reuses its request and original props.
+ * Closing and rejecting record settlement state without removing an item.
+ * @returns {OverlayStoreApi} Store controls and stable item snapshot readers.
+ * - open `<TResult>(options: DisplayOptions) => OverlayRequest<TResult>` - Enqueues an item or reuses a pending identity.
+ * - close `(id: OverlayId, result?: unknown) => void` - Starts closing with a result; removal resolves it.
+ * - closeAll `() => void` - Starts closing all open items without settling requests.
+ * - reject `(id: OverlayId, reason?: unknown) => void` - Starts closing with a rejection to settle on removal.
+ * - remove `(id?: OverlayId) => void` - Removes and settles one item, defaulting to the last.
+ * - clear `() => void` - Removes every item and settles its recorded result or rejection.
+ * - subscribe `(listener: () => void) => () => void` - Observes changes and returns an unsubscribe callback.
+ * - getSnapshot `() => ReadonlyArray<OverlayItem>` - Reads current items, including closing ones.
+ * - getInitialSnapshot `() => ReadonlyArray<OverlayItem>` - Reads the initial empty server snapshot.
+ * @example
+ * ```ts
+ * const store = createOverlayStore();
+ * const request = store.open<boolean>({ type: "notice" });
+ * store.close(request.id, true);
+ * store.remove(request.id);
+ * const acknowledged = await request.promise; // true
+ * ```
+ */
 export function createOverlayStore(): OverlayStoreApi {
   const store = createStore<OverlayState>({ items: [] });
   const pendingSettlers = new Map<OverlayId, PendingSettler>();

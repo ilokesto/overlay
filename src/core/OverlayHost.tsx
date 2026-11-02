@@ -3,10 +3,22 @@ import { useOverlayItems } from "./useOverlayItems";
 import type { OverlayContextGetter } from "./useOverlay";
 
 interface OverlayHostProps {
+  /** Hook reading the provider scope hosted here. */
   readonly useOverlayContext: OverlayContextGetter;
 }
 
-/** Subscribes to the provider's items and preserves each renderer's keyed identity. */
+/**
+ * @description Renders a keyed adapter for each item from the supplied provider
+ * scope. Providers already mount a host; additional hosts duplicate rendering.
+ * @param {OverlayHostProps} props - Host configuration.
+ * @param {OverlayContextGetter} props.useOverlayContext - Hook reading the scope to host.
+ * @returns {React.ReactElement} Fragment containing the scope's keyed item renderers.
+ * @example
+ * ```tsx
+ * // For a custom provider implementation that does not mount its own host:
+ * <OverlayHost useOverlayContext={useCustomOverlayContext} />
+ * ```
+ */
 export function OverlayHost({ useOverlayContext }: OverlayHostProps) {
   const items = useOverlayItems(useOverlayContext);
 

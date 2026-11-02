@@ -69,6 +69,8 @@ export function App() {
 
 Use Node 24.22.1 and pnpm 10.17.1 from this repository root.
 
+Follow [JSDOC.md](./JSDOC.md) when contributing public API documentation. `pnpm lint:jsdoc` checks the semantic contract and also runs in `test:tooling`. Published declarations retain these API comments.
+
 ```bash
 pnpm install --frozen-lockfile
 pnpm typecheck
