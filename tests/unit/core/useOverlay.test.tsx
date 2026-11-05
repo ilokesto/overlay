@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { OverlayProvider, useOverlay, useOverlayItems } from "../../../src/core/OverlayProvider";
 import type { OverlayAdapterMap } from "../../../src/contracts/adapter";
@@ -34,6 +34,60 @@ describe("useOverlay", () => {
 
     expect(promise).toBeInstanceOf(Promise);
   });
+
+  it.each(["remove", "clear"] as const)(
+    "open: rejected item settled by %s -> no unhandled rejection",
+    async (settlement) => {
+      const { result } = renderHook(
+        () => ({ overlay: useOverlay(), items: useOverlayItems() }),
+        { wrapper }
+      );
+      const unhandled = vi.fn();
+      process.on("unhandledRejection", unhandled);
+
+      try {
+        act(() => {
+          const id = result.current.overlay.open({ type: "modal" });
+          result.current.overlay.reject(id, new Error("cancelled"));
+          if (settlement === "remove") {
+            result.current.overlay.remove(id);
+          } else {
+            result.current.overlay.clear();
+          }
+        });
+        await new Promise<void>((resolve) => setImmediate(resolve));
+
+        expect(unhandled).not.toHaveBeenCalled();
+        expect(result.current.items).toEqual([]);
+      } finally {
+        process.off("unhandledRejection", unhandled);
+      }
+    }
+  );
+
+  it.each(["open-first", "display-first"] as const)(
+    "display: shared id with %s -> preserves the original rejection",
+    async (order) => {
+      const { result } = renderHook(() => useOverlay(), { wrapper });
+      const options = { id: "shared", type: "modal" };
+      const reason = new Error("cancelled");
+      let outcome: Promise<unknown> | undefined;
+
+      act(() => {
+        if (order === "open-first") {
+          result.current.open(options);
+        }
+        outcome = result.current.display(options).catch((error: unknown) => error);
+        if (order === "display-first") {
+          result.current.open(options);
+        }
+        result.current.reject(options.id, reason);
+        result.current.remove(options.id);
+      });
+
+      await expect(outcome).resolves.toBe(reason);
+    }
+  );
 
   it("reject calls store.reject and transitions item to closing", () => {
     let id: string | undefined;

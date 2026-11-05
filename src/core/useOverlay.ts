@@ -11,7 +11,7 @@ export interface UseOverlayReturn {
   readonly display: <TResult = unknown>(
     options: DisplayOptions
   ) => Promise<TResult | undefined>;
-  /** Opens an item and returns its id without exposing its result promise. */
+  /** Opens an item, returns its id, and handles rejection of its unexposed result promise. */
   readonly open: (options: DisplayOptions) => OverlayId;
   /** Starts closing with a result; call remove to settle the request. */
   readonly close: (id: OverlayId, result?: unknown) => void;
@@ -58,7 +58,9 @@ export function useOverlay(getContext: OverlayContextGetter): UseOverlayReturn {
 
   const open = useCallback(
     (options: DisplayOptions): OverlayId => {
-      const { id } = store.open(options);
+      const { id, promise } = store.open(options);
+      // This API exposes no promise for the caller to handle.
+      void promise.catch(() => undefined);
       return id;
     },
     [store]
