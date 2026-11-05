@@ -176,6 +176,53 @@ describe("createOverlayStore", () => {
   });
 
   describe("remove", () => {
+    it.each(["explicit", "omitted", "undefined"] as const)(
+      "remove: empty string id selected by %s -> removes and resolves its result",
+      async (selection) => {
+        const store = createOverlayStore();
+        store.open({ id: "under", type: "modal" });
+        const request = store.open<string>({ id: "", type: "modal" });
+        if (selection === "explicit") {
+          store.open({ id: "above", type: "modal" });
+        }
+        store.close("", "done");
+
+        if (selection === "omitted") {
+          store.remove();
+        } else {
+          store.remove(selection === "explicit" ? "" : undefined);
+        }
+
+        expect(store.getSnapshot().map((item) => item.id)).toEqual(
+          selection === "explicit" ? ["under", "above"] : ["under"]
+        );
+        await expect(request.promise).resolves.toBe("done");
+      }
+    );
+
+    it("remove: rejected empty string id -> removes and preserves rejection reason", async () => {
+      const store = createOverlayStore();
+      const request = store.open({ id: "", type: "modal" });
+      const reason = new Error("cancelled");
+      const outcome = request.promise.catch((error: unknown) => error);
+      store.reject("", reason);
+
+      store.remove("");
+
+      expect(store.getSnapshot()).toEqual([]);
+      await expect(outcome).resolves.toBe(reason);
+    });
+
+    it("remove: empty string id absent -> leaves the topmost item untouched", () => {
+      const store = createOverlayStore();
+      store.open({ id: "top", type: "modal" });
+      const snapshot = store.getSnapshot();
+
+      store.remove("");
+
+      expect(store.getSnapshot()).toBe(snapshot);
+    });
+
     it("removes item from snapshot", () => {
       const store = createOverlayStore();
       const { id } = store.open({ type: "modal" });
