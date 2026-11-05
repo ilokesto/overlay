@@ -22,6 +22,27 @@ function renderOverlay(
 }
 
 describe("OverlayHost adapter props", () => {
+  it("adapter remove: empty string id -> removes its item and settles close result", async () => {
+    const context = createOverlayContext();
+    const store = createOverlayStore();
+    const request = store.open<string>({ id: "", type: "test" });
+    store.open({ id: "above", type: "other" });
+    const Adapter: OverlayAdapterComponent = ({ close, remove }) => (
+      <button onClick={() => { close("acknowledged"); remove(); }}>Acknowledge</button>
+    );
+    render(
+      <context.Provider adapters={{ test: Adapter, other: () => null }} store={store}>
+        {null}
+      </context.Provider>
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Acknowledge" }));
+
+    expect(store.getSnapshot().map((item) => item.id)).toEqual(["above"]);
+    expect(screen.queryByRole("button", { name: "Acknowledge" })).not.toBeInTheDocument();
+    await expect(request.promise).resolves.toBe("acknowledged");
+  });
+
   it("uses the runtime close when item props contain close", () => {
     // Given
     const consumerClose = vi.fn();

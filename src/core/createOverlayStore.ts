@@ -153,7 +153,7 @@ export function createOverlayStore(): OverlayStoreApi {
   function remove(id?: OverlayId): void {
     const targetId = id ?? store.getState().items.at(-1)?.id;
 
-    if (!targetId) {
+    if (targetId === undefined) {
       return;
     }
 
