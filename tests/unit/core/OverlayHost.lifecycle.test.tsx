@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, act } from "@testing-library/react";
-import { StrictMode } from "react";
+import { StrictMode, useState } from "react";
 import { createOverlayContext } from "../../../src/core/createOverlayContext";
 import { createOverlayStore } from "../../../src/core/createOverlayStore";
 import type { OverlayAdapterComponent, OverlayAdapterHooks } from "../../../src/contracts/adapter";
@@ -25,6 +25,98 @@ function createTrackingAdapter(): {
 }
 
 describe("adapter lifecycle hooks", () => {
+  it.each([
+    { strict: false, closing: false },
+    { strict: true, closing: false },
+    { strict: false, closing: true },
+    { strict: true, closing: true },
+  ])(
+    "same-batch id reuse: strict=$strict closing=$closing -> resets adapter and notifies each lifetime once",
+    ({ strict, closing }) => {
+      const ctx = createOverlayContext();
+      const store = createOverlayStore();
+      const calls: string[] = [];
+      const props = {};
+      let serial = 0;
+      const Adapter: OverlayAdapterComponent = ({ useLifecycle }) => {
+        const [instance] = useState(() => ++serial);
+        useLifecycle({
+          onOpen: () => calls.push(`open:${instance}`),
+          onClosing: () => calls.push(`closing:${instance}`),
+          onUnmount: () => calls.push(`unmount:${instance}`),
+        });
+        return <output>{instance}</output>;
+      };
+      const clock = vi.spyOn(Date, "now").mockReturnValue(1000);
+      try {
+        store.open({ id: "reuse", type: "modal", props });
+        const content = (
+          <ctx.Provider store={store} adapters={{ modal: Adapter }}>
+            {null}
+          </ctx.Provider>
+        );
+        const { container } = render(strict ? <StrictMode>{content}</StrictMode> : content);
+        const first = container.textContent;
+        if (closing) {
+          act(() => store.close("reuse"));
+        }
+
+        act(() => {
+          store.remove("reuse");
+          store.open({ id: "reuse", type: "modal", props });
+        });
+
+        const second = container.textContent;
+        expect(second).not.toBe(first);
+        expect(calls).toEqual([
+          `open:${first}`,
+          ...(closing ? [`closing:${first}`] : []),
+          `unmount:${first}`,
+          `open:${second}`,
+        ]);
+
+        act(() => store.remove("reuse"));
+        expect(calls.at(-1)).toBe(`unmount:${second}`);
+        expect(calls.filter((call) => call.startsWith("unmount:"))).toHaveLength(2);
+      } finally {
+        clock.mockRestore();
+      }
+    }
+  );
+
+  it("duplicate pending id: open and closing -> retains request, props and renderer", () => {
+    const ctx = createOverlayContext();
+    const store = createOverlayStore();
+    const { Adapter, calls } = createTrackingAdapter();
+    const first = store.open({ id: "duplicate", type: "modal", props: { value: "first" } });
+    const original = store.getSnapshot()[0];
+    render(
+      <ctx.Provider store={store} adapters={{ modal: Adapter }}>
+        {null}
+      </ctx.Provider>
+    );
+    let duplicate: typeof first | undefined;
+
+    act(() => {
+      duplicate = store.open({ id: "duplicate", type: "other", props: { value: "second" } });
+    });
+
+    expect(duplicate).toBe(first);
+    expect(store.getSnapshot()[0]).toBe(original);
+    expect(calls).toEqual([{ phase: "onOpen", id: "duplicate" }]);
+
+    act(() => {
+      store.close("duplicate");
+      duplicate = store.open({ id: "duplicate", type: "other" });
+    });
+    expect(duplicate).toBe(first);
+    expect(store.getSnapshot()[0].props).toEqual({ value: "first" });
+    expect(calls).toEqual([
+      { phase: "onOpen", id: "duplicate" },
+      { phase: "onClosing", id: "duplicate" },
+    ]);
+  });
+
   it("keeps one lifecycle sequence when StrictMode replays mounted effects", () => {
     const ctx = createOverlayContext();
     const { Adapter, calls } = createTrackingAdapter();

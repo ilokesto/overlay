@@ -10,7 +10,7 @@ export type OverlayStatus = "open" | "closing";
 
 /** Immutable snapshot of one overlay and its pending settlement state. */
 export interface OverlayItem {
-  /** Store-local identity, also used as the renderer key. */
+  /** Caller-visible store-local identity, reusable after removal. */
   readonly id: OverlayId;
   /** Adapter registry key used to render this item. */
   readonly type: string;
