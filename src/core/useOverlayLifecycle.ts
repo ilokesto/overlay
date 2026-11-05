@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef } from "react";
 import type { OverlayAdapterHooks, OverlayRenderProps } from "../contracts/adapter";
 import type { OverlayId, OverlayItem, OverlayStoreApi } from "../contracts/overlay";
 import type { OverlayPlugin } from "../contracts/plugin";
+import { overlayItemIdentity } from "./overlayItemIdentity";
+import type { OverlayItemWithIdentity } from "./overlayItemIdentity";
 
 /**
  * @description Connects one rendered item to adapter hooks and provider plugins.
@@ -79,9 +81,13 @@ export function useOverlayLifecycle(
   useEffect(() => {
     return () => {
       // Effect replacement and StrictMode cleanup are not item removal.
+      const keyedItem: OverlayItemWithIdentity = item;
       const itemRemainsInStore = store
         .getSnapshot()
-        .some((storedItem) => storedItem.id === item.id);
+        .some((storedItem: OverlayItemWithIdentity) =>
+          storedItem.id === item.id &&
+          storedItem[overlayItemIdentity] === keyedItem[overlayItemIdentity],
+        );
       if (itemRemainsInStore) {
         return;
       }

@@ -1,4 +1,6 @@
 import { OverlayItemRenderer } from "./OverlayItemRenderer";
+import { overlayItemIdentity } from "./overlayItemIdentity";
+import type { OverlayItemWithIdentity } from "./overlayItemIdentity";
 import { useOverlayItems } from "./useOverlayItems";
 import type { OverlayContextGetter } from "./useOverlay";
 
@@ -24,9 +26,9 @@ export function OverlayHost({ useOverlayContext }: OverlayHostProps) {
 
   return (
     <>
-      {items.map((item) => (
+      {items.map((item: OverlayItemWithIdentity) => (
         <OverlayItemRenderer
-          key={item.id}
+          key={item[overlayItemIdentity] ?? item.id}
           item={item}
           getContext={useOverlayContext}
         />

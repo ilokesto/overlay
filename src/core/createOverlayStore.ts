@@ -1,4 +1,6 @@
 import { createStore } from "@ilokesto/store";
+import { overlayItemIdentity } from "./overlayItemIdentity";
+import type { OverlayItemWithIdentity } from "./overlayItemIdentity";
 import type {
   DisplayOptions,
   OverlayId,
@@ -13,8 +15,11 @@ type PendingSettler = {
   readonly reject: (reason?: unknown) => void;
 };
 
-function createOverlayItem(options: DisplayOptions, id: OverlayId): OverlayItem {
+let nextItemIdentity = 0;
+
+function createOverlayItem(options: DisplayOptions, id: OverlayId): OverlayItemWithIdentity {
   return {
+    [overlayItemIdentity]: ++nextItemIdentity,
     id,
     type: options.type,
     props: options.props ?? {},
