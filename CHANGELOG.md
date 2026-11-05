@@ -1,5 +1,13 @@
 # @ilokesto/overlay
 
+## 2.0.4
+
+### Patch Changes
+
+- 7c42d87: Handle rejected requests opened through the ID-only `useOverlay().open()` API without changing rejection delivery to `display()` or direct store consumers.
+- 52b76b7: Allow overlays with an empty string ID to be removed and settled through store, hook, and adapter controls. Omitting the removal ID or passing `undefined` continues to select the most recently inserted item.
+- 01c4c02: Give each newly opened overlay a separate renderer lifetime so removing and reopening the same ID in one React batch resets adapter state and notifies removal and opening. Duplicate pending IDs continue to reuse the original request and renderer.
+
 ## 2.0.3
 
 ### Patch Changes
